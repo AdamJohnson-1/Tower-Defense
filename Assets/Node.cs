@@ -22,8 +22,12 @@ public class Node : MonoBehaviour
         myRenderer.material.color = startColor;
     }
 
+    public GameObject tower;
+
     private void OnMouseDown()
     {
+
         
+        Instantiate(tower);
     }
 }
