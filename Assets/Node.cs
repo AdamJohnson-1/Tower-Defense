@@ -26,8 +26,13 @@ public class Node : MonoBehaviour
 
     private void OnMouseDown()
     {
+        Vector3 nodePosition = gameObject.transform.position;
+        float x = nodePosition.x;
+        float y = nodePosition.y;
+        float z = nodePosition.z;
 
+        Vector3 towerPosition = new Vector3(x + 1.5f, y + 2f, z - 1.5f);
         
-        Instantiate(tower);
+        Instantiate(tower, towerPosition, Quaternion.identity);
     }
 }
