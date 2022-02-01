@@ -31,7 +31,10 @@ public class Node : MonoBehaviour
         float y = nodePosition.y;
         float z = nodePosition.z;
 
-        Vector3 towerPosition = new Vector3(x + 1.5f, y + 2f, z - 1.5f);
+        Vector3 towerPosition = new Vector3(
+            gameObject.transform.eulerAngles.x + gameObject.transform.localScale.x / 2,
+            gameObject.transform.eulerAngles.y + gameObject.transform.localScale.y/2,
+            gameObject.transform.eulerAngles.z + +gameObject.transform.localScale.z / 2);
         
         Instantiate(tower, towerPosition, Quaternion.identity);
     }
