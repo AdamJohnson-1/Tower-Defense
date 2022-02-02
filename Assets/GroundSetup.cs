@@ -44,8 +44,8 @@ public class GroundSetup : MonoBehaviour
         for (int i = 0; i < gridSideLength * gridSideLength; i++) {
             if (nodes[i] == 1)
             {
-                position.z = towerSideLength * ((i % gridSideLength) + 1);
-                position.x = towerSideLength * (Mathf.Floor(((float)i) / gridSideLength));
+                position.x = towerSideLength * ((i % gridSideLength) + 1);
+                position.z = towerSideLength * (gridSideLength - Mathf.Floor(((float)i) / gridSideLength));
                 Instantiate(towerNode, position, Quaternion.identity);
             }
         }
