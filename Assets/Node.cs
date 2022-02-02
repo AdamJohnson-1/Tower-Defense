@@ -6,6 +6,7 @@ public class Node : MonoBehaviour
 {
     private Renderer myRenderer;
     private Color startColor;
+    public GameObject tower;
 
     // Start is called before the first frame update
     void Start()
@@ -22,19 +23,21 @@ public class Node : MonoBehaviour
         myRenderer.material.color = startColor;
     }
 
-    public GameObject tower;
-
     private void OnMouseDown()
     {
+        if (tower == null)
+        {
+            Debug.Log("Tower not assigned");
+        }
         Vector3 nodePosition = gameObject.transform.position;
         float x = nodePosition.x;
         float y = nodePosition.y;
         float z = nodePosition.z;
 
         Vector3 towerPosition = new Vector3(
-            gameObject.transform.eulerAngles.x + gameObject.transform.localScale.x / 2,
-            gameObject.transform.eulerAngles.y + gameObject.transform.localScale.y/2,
-            gameObject.transform.eulerAngles.z + +gameObject.transform.localScale.z / 2);
+            x + 1,
+            y + 2,
+            z - 1);
         
         Instantiate(tower, towerPosition, Quaternion.identity);
     }
