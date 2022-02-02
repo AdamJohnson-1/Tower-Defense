@@ -1,11 +1,26 @@
 fileFormatVersion: 2
-guid: e937ae3411e352946b282a9198d5b845
+guid: e01d8f70c0fe4b14483b249a2e1f13c8
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -623603649343465320
-    second: Scene
+      74: 8601350409674791333
+    second: Planet|BeltRotatorAction
+  - first:
+      74: 5957781757836038346
+    second: Planet|PlanetAction
+  - first:
+      74: 4814901325335520166
+    second: Belt|BeltRotatorAction
+  - first:
+      74: -7533759906005522455
+    second: Belt|PlanetAction
+  - first:
+      74: -2766392298248701985
+    second: BeltRotator|BeltRotatorAction
+  - first:
+      74: 454196271741160527
+    second: BeltRotator|PlanetAction
   externalObjects: {}
   materials:
     materialImportMode: 2
@@ -91,11 +106,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 1
+  animationType: 2
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
