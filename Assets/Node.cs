@@ -38,7 +38,7 @@ public class Node : MonoBehaviour
             x + 1,
             y + 2,
             z - 1);
-        
+
         Instantiate(tower, towerPosition, Quaternion.identity);
     }
 }
