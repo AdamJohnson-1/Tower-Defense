@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657713, g: 0.4964131, b: 0.574816, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -307,7 +307,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh20590
+  m_Name: pb_Mesh26692
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -617,13 +617,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_LocalRotation: {x: 0.40821788, y: -0.23456968, z: 0.10938163, w: 0.8754261}
+  m_LocalRotation: {x: 0.40869126, y: 0.2307477, z: -0.10759941, w: 0.8764413}
   m_LocalPosition: {x: 12, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+  m_LocalEulerAnglesHint: {x: 50, y: 29.5, z: 0}
 --- !u!1 &757358372
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,7 +637,7 @@ GameObject:
   - component: {fileID: 757358375}
   - component: {fileID: 757358374}
   m_Layer: 5
-  m_Name: End Game Button
+  m_Name: Leave Game Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -660,8 +660,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -45, y: -18}
-  m_SizeDelta: {x: 80, y: 24.383087}
+  m_AnchoredPosition: {x: -52.276978, y: -18}
+  m_SizeDelta: {x: 94.554, y: 24.3831}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &757358374
 MonoBehaviour:
@@ -947,13 +947,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.4756242, y: 0, z: 0, w: 0.87964857}
+  m_LocalRotation: {x: 0.5157859, y: 0, z: 0, w: 0.8567176}
   m_LocalPosition: {x: 24.9, y: 18.63, z: -5.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 56.8, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 62.1, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -966,11 +966,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed424c9834486748b5ded3dfa779f2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  panSpeed: 30
-  panBorderThickness: 10
-  scrollSpeed: 5
-  minY: 10
-  maxY: 80
+  panSpeed: 12
+  panBorderThickness: 15
+  scrollSpeed: 2
+  minY: 7
+  maxY: 25
+  minX: 6
+  maxX: 42
+  minZ: -2
+  maxZ: 40
 --- !u!224 &989896505 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8339280366159436791, guid: c211acf0af7a78543b38c24654ad6ab9, type: 3}
@@ -1170,7 +1174,7 @@ GameObject:
   - component: {fileID: 1899328263}
   - component: {fileID: 1899328262}
   m_Layer: 5
-  m_Name: End Game
+  m_Name: Leave Game
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1228,7 +1232,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'End Game
+  m_Text: 'Leave Game
 
 '
 --- !u!222 &1899328263
