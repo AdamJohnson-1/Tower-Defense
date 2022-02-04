@@ -48,9 +48,9 @@ public class Node : MonoBehaviour
 
         Vector3 towerPosition = new Vector3(
             x + 1,
-            y + 2,
+            y + 1,
             z - 1);
 
-        Instantiate(tower, towerPosition, Quaternion.identity);
+        GameObject newTower = Instantiate(tower, towerPosition, Quaternion.identity);
     }
 }
