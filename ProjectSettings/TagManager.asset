@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Global
+  - horde
   layers:
   - Default
   - TransparentFX
