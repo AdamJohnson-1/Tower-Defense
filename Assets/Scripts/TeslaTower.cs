@@ -6,16 +6,11 @@ using UnityEngine;
 public class TeslaTower : MonoBehaviour
 {
     private float shootDelay = 0.35f;
-    private float lastTime = 0;
+    private float thisTime = 0;
     private float towerRange = 20.0f;
     private float maxDamage = 150f;
     private float minDamage = 1f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        lastTime = Time.time;
-    }
 
     // Update is called once per frame
     // I am programming the towers to periodically
@@ -23,11 +18,11 @@ public class TeslaTower : MonoBehaviour
     // Perhaps the strength should decrease with the inverse cube of the distance
     void Update()
     {
-        float thisTime = Time.time;
+        thisTime += Time.deltaTime;
         //Debug.Log($"Tower.update() {thisTime} {lastTime} ");    
-        if ((thisTime - lastTime) > shootDelay) {
+        if (thisTime > shootDelay) {
             SendShock();
-            lastTime = thisTime;
+            thisTime = 0;
         }
     }
 

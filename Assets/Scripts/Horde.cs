@@ -19,9 +19,9 @@ public class Horde : MonoBehaviour
         
     }
 
-    internal void Damage(float dist)
+    internal void Damage(float damage)
     {
-        health -= dist;
+        health -= damage;
         Debug.Log($"Health {health}");
         if (health < 0)
         {
