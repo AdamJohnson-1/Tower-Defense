@@ -1920,7 +1920,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.1
+  m_Intensity: 0.2
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -3921,7 +3921,8 @@ Animation:
   m_Enabled: 1
   serializedVersion: 3
   m_Animation: {fileID: -623603649343465320, guid: e937ae3411e352946b282a9198d5b845, type: 3}
-  m_Animations: []
+  m_Animations:
+  - {fileID: -623603649343465320, guid: e937ae3411e352946b282a9198d5b845, type: 3}
   m_WrapMode: 0
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
