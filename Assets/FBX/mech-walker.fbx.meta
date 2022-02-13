@@ -1,14 +1,30 @@
 fileFormatVersion: 2
-guid: cad7ac61ad6cc37409941db411fc189b
+guid: 4d9a68516d6e22740b610f4371c2a1c9
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sci-fi-tower-material
-    second: {fileID: 2100000, guid: c36e2074655ee4e33af5941879ac0591, type: 2}
+      74: -1422011007694221501
+    second: Armature|ArmatureAction.001
+  - first:
+      74: 4743084820616853705
+    second: Armature|CameraAction
+  - first:
+      74: 8039437375205953329
+    second: Armature|SunAction
+  - first:
+      74: 8440248360967096626
+    second: Camera|CameraAction
+  - first:
+      74: -2775073201559227946
+    second: Camera|SunAction
+  - first:
+      74: -5106739836597626375
+    second: Sun|CameraAction
+  - first:
+      74: -7796041486607857598
+    second: Sun|SunAction
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
