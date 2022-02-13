@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
 using UnityEngine;
+
 
 public class Node : MonoBehaviour
 {
     private Renderer myRenderer;
     private Color startColor;
+    public GameObject tower;
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +18,10 @@ public class Node : MonoBehaviour
     }
     private void OnMouseEnter()
     {
+        //so the node isn't highlighted through the User Interface
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+
         myRenderer.material.color = Color.gray;
     }
     private void OnMouseExit()
@@ -22,17 +29,28 @@ public class Node : MonoBehaviour
         myRenderer.material.color = startColor;
     }
 
-    public GameObject tower;
-
     private void OnMouseDown()
     {
+        //so the player doesn't accidentially place a turret through the User Interface
+        if (EventSystem.current.IsPointerOverGameObject())
+            return;
+            
+        if (tower == null)
+        {
+            Debug.Log("Tower not assigned");
+        }
+
+
         Vector3 nodePosition = gameObject.transform.position;
         float x = nodePosition.x;
         float y = nodePosition.y;
         float z = nodePosition.z;
 
-        Vector3 towerPosition = new Vector3(x + 1.5f, y + 2f, z - 1.5f);
-        
-        Instantiate(tower, towerPosition, Quaternion.identity);
+        Vector3 towerPosition = new Vector3(
+            x + 1,
+            y + 1,
+            z - 1);
+
+        GameObject newTower = Instantiate(tower, towerPosition, Quaternion.identity);
     }
 }
