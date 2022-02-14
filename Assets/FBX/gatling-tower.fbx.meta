@@ -1,14 +1,15 @@
 fileFormatVersion: 2
-guid: cad7ac61ad6cc37409941db411fc189b
+guid: b8e598f211a37ee45aa24b805514ac86
 ModelImporter:
   serializedVersion: 20200
-  internalIDToNameTable: []
-  externalObjects:
+  internalIDToNameTable:
   - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sci-fi-tower-material
-    second: {fileID: 2100000, guid: c36e2074655ee4e33af5941879ac0591, type: 2}
+      74: 4781951162920444690
+    second: Armature|ArmatureAction
+  - first:
+      74: 3435988581770775301
+    second: Armature|Gatling Turret.barrelAction
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

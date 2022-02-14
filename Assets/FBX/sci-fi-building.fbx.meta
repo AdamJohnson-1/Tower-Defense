@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: cad7ac61ad6cc37409941db411fc189b
+guid: f0e814c4d2a427f43adfe2370e5dc7d4
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: sci-fi-tower-material
-    second: {fileID: 2100000, guid: c36e2074655ee4e33af5941879ac0591, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
