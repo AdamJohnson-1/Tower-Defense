@@ -13,6 +13,10 @@ public class Shop : MonoBehaviour
     public int moneyPerDump = 10;
 
     public ErrorMessageScript errorMessageScript;
+    public ActionHandlerScript actionHandlerScript;
+
+    public GameObject standardTower;
+    public GameObject standardTowerHologram;
 
     void Start()
     {
@@ -32,14 +36,7 @@ public class Shop : MonoBehaviour
 
     public void PurchaseStandardTurret()
     {
-        if(checkIfMoneyGreaterOrEqual(70))
-        {
-            changeMoney(-70);
-        } else
-        {
-            errorMessageScript.ShowMessage("Insufficient money.");
-        }
-        
+        actionHandlerScript.selectTowerToPlace(standardTower, standardTowerHologram);
     }
 
     public void PurchaseAnotherTurret()

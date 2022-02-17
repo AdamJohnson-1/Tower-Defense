@@ -50,13 +50,4 @@ public class Cache : MonoBehaviour
         return currentLife;
     }
 
-    //public void setTowerToBuild(GameObject tower)
-    //{
-    //    towerToBuild = tower;
-    //}
-    //public GameObject getTowerToBuild()
-    //{
-    //    return towerToBuild;
-    //}
-
 }

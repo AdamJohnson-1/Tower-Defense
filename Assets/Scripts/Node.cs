@@ -10,9 +10,13 @@ public class Node : MonoBehaviour
     private Color startColor;
     public GameObject tower;
 
+    private MouseInputHandlerScript mouseInputHandler;
+
     // Start is called before the first frame update
     void Start()
     {
+        mouseInputHandler = GameObject.FindWithTag("Global").GetComponent< MouseInputHandlerScript>();
+
         myRenderer = gameObject.GetComponent<Renderer>();
         startColor = myRenderer.material.color;
     }
@@ -22,35 +26,10 @@ public class Node : MonoBehaviour
         if (EventSystem.current.IsPointerOverGameObject())
             return;
 
-        myRenderer.material.color = Color.gray;
+        mouseInputHandler.onMouseEnterNode(gameObject);
     }
     private void OnMouseExit()
     {
-        myRenderer.material.color = startColor;
-    }
-
-    private void OnMouseDown()
-    {
-        //so the player doesn't accidentially place a turret through the User Interface
-        if (EventSystem.current.IsPointerOverGameObject())
-            return;
-            
-        if (tower == null)
-        {
-            Debug.Log("Tower not assigned");
-        }
-
-
-        Vector3 nodePosition = gameObject.transform.position;
-        float x = nodePosition.x;
-        float y = nodePosition.y;
-        float z = nodePosition.z;
-
-        Vector3 towerPosition = new Vector3(
-            x + 1,
-            y + 1,
-            z - 1);
-
-        GameObject newTower = Instantiate(tower, towerPosition, Quaternion.identity);
+        mouseInputHandler.onMouseLeaveNode(gameObject);
     }
 }
