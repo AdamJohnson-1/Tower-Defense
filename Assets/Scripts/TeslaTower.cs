@@ -10,9 +10,12 @@ public class TeslaTower : MonoBehaviour
     public float towerRange = 20.0f;
     public float maxDamage = 150f;
     public float minDamage = 1f;
+    public float lightOnMaxTime = .1f;
     public ParticleSystem lightningSystem;
     private ParticleSystem[] systems;
     private Boolean playing;
+    private Light teslaBulb;
+    private float lightOnTime;
 
 
 
@@ -24,13 +27,27 @@ public class TeslaTower : MonoBehaviour
     private void Awake()
     {
         systems = gameObject.GetComponentsInChildren<ParticleSystem>();
+        teslaBulb = gameObject.GetComponentInChildren<Light>();
+        lightOnTime = 0f;
+        teslaBulb.range = towerRange;
+        thisTime = shootDelay; // allow tower to shoot right after placement
     }
 
     void Update()
     {
         thisTime += Time.deltaTime;
-        //Debug.Log($"Tower.update() {thisTime} {lastTime} ");    
-        if (thisTime > shootDelay) {
+        //Debug.Log($"Tower.update() {thisTime} {lastTime} ");
+        if (lightOnTime < lightOnMaxTime)
+        {
+            lightOnTime += Time.deltaTime;
+        }
+        else
+        {
+            teslaBulb.enabled = false;
+            lightOnTime = 0f;
+        }
+        
+        if (thisTime > shootDelay) { 
             SendShock();
             thisTime = 0;
         }
@@ -54,6 +71,8 @@ public class TeslaTower : MonoBehaviour
         {
             if (playing)
             {
+                lightOnTime = 0f; //reset the light turn off countdown
+                teslaBulb.enabled = true;
                 system.Play();
             }
             else
