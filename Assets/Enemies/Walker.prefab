@@ -513,7 +513,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639161b7c2c7f4ab0a1d1c99b79d5794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destination: {fileID: 0}
 --- !u!114 &4057962679367890653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,6 +525,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa8686f8f66cffc4d98ab2d809f947a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damageEffect: {fileID: 765516873093873642, guid: 2d3f8d265c74d4d2caf445f208020be4, type: 3}
+  minSizeParticle: 0.2
+  maxSizeParticle: 0.8
+  particleScale: 0.8
+  particleLifetime: 1
 --- !u!1 &4512992574493655828
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,7 +64,7 @@ public class TeslaTower : MonoBehaviour
                 Debug.Log("Shooting enemy");
                 float damage = (float)(maxDamage / Math.Pow(dist + 1, 2));
                 damage = Math.Max(minDamage, damage);
-                enemy.GetComponent<Horde>().Damage(damage);
+                enemy.GetComponent<Horde>().Damage(damage, gameObject);
             }
         }
         foreach (ParticleSystem system in systems)

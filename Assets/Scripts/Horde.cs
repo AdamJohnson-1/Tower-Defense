@@ -5,12 +5,16 @@ using UnityEngine;
 
 public class Horde : MonoBehaviour
 {
+    public GameObject damageEffect;
+    public float minSizeParticle = .4f;
+    public float maxSizeParticle = 2f;
+    public float particleScale = 1f;
+    public float particleLifetime = 1f;
 
     private float health = 100f;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
     }
 
     // Update is called once per frame
@@ -23,6 +27,25 @@ public class Horde : MonoBehaviour
     {
         health -= damage;
         Debug.Log($"Health {health}");
+        if (health < 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    internal void Damage(float damage, GameObject attackingTurret)
+    {
+        health -= damage;
+        Debug.Log($"Health {health}");
+        GameObject particleObj = Instantiate(damageEffect, gameObject.transform.position,
+            Quaternion.LookRotation(
+                attackingTurret.transform.position - gameObject.transform.position));
+        var main = particleObj.GetComponentInChildren<ParticleSystem>().main;
+        main.startSize = Mathf.Min(Mathf.Max(particleScale * damage / 100,
+            minSizeParticle), maxSizeParticle);
+
+        Destroy(particleObj, particleLifetime);
+
+        //damageEffect.Play();
         if (health < 0)
         {
             Destroy(gameObject);
