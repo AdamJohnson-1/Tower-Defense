@@ -59,7 +59,7 @@ public class TeslaTower : AttackTower
         return 0.35f;
     }
 
-    public override List<GameObject> FilterTargets(GameObject[] enemies)
+    public override List<GameObject> FilterTargets(List<GameObject> enemies)
     {
         var en = new List<GameObject> (enemies);
         return en.FindAll(h => CalcDistance(h) < towerRange);
@@ -75,16 +75,18 @@ public class TeslaTower : AttackTower
         }
     }
 
-    private float CalcDistance(GameObject enemy)
-    {
-        Vector3 towerPosition = gameObject.transform.position;
-        Vector3 enemyPosition = enemy.gameObject.transform.position;
-
-        return Vector3.Distance(towerPosition, enemyPosition);
-    }
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(gameObject.transform.position, towerRange);
+    }
+
+    public override float GetDefaultRange()
+    {
+        return towerRange;
+    }
+
+    public override int GetTowerPrice()
+    {
+        return 60;
     }
 }

@@ -19,7 +19,7 @@ public abstract class AttackTower : MonoBehaviour
     }
 
     //returns only the enemies upon which this particular tower will have an effect
-    public abstract List<GameObject> FilterTargets(GameObject[] enemies);
+    public abstract List<GameObject> FilterTargets(List<GameObject> enemies);
 
 
     public void Update()
@@ -28,7 +28,7 @@ public abstract class AttackTower : MonoBehaviour
         if (thisTime > AttackDelay())
         {
             var enemies = GameObject.FindGameObjectsWithTag("horde");
-            var filteredEnemies = FilterTargets(enemies);
+            var filteredEnemies = FilterTargets(new List<GameObject> (enemies));
             Animate(filteredEnemies);
             foreach (GameObject enemy in filteredEnemies)
             {
@@ -39,4 +39,22 @@ public abstract class AttackTower : MonoBehaviour
             }
             thisTime = 0;
         }
+
+    public float CalcDistance(GameObject enemy)
+    {
+        Vector3 towerPosition = gameObject.transform.position;
+        Vector3 enemyPosition = enemy.gameObject.transform.position;
+
+        return Vector3.Distance(towerPosition, enemyPosition);
     }
+
+
+    //Used solely for the interface when placing a tower. 
+    public abstract float GetDefaultRange();
+
+
+    //The price an implementation of the tower can be purchased for
+    public abstract int GetTowerPrice();
+
+
+}

@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 3466703025915820863}
   m_Layer: 0
   m_Name: sci-fi-base
-  m_TagString: Untagged
+  m_TagString: Destination
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
