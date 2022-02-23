@@ -40,6 +40,7 @@ public abstract class AttackTower : MonoBehaviour
         }
     }
 
+
     public float CalcDistance(GameObject enemy)
     {
         Vector3 towerPosition = gameObject.transform.position;
