@@ -32,13 +32,13 @@ public abstract class AttackTower : MonoBehaviour
             Animate(filteredEnemies);
             foreach (GameObject enemy in filteredEnemies)
             {
-                    Debug.Log("Shooting enemy");
-                    float damage = GetDamage(enemy);
-                    enemy.GetComponent<Horde>().Damage(damage, gameObject);
-                }
+                Debug.Log("Shooting enemy");
+                float damage = GetDamage(enemy);
+                enemy.GetComponent<Horde>().Damage(damage, gameObject);
             }
-            thisTime = 0;
+        thisTime = 0;
         }
+    }
 
     public float CalcDistance(GameObject enemy)
     {
