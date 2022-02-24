@@ -14,6 +14,7 @@ public class Cache : MonoBehaviour
     private float currentLife;
     private int currentGold;
     private Cache cache;
+    private static int score;
 
     private void Awake()
     {
@@ -25,6 +26,15 @@ public class Cache : MonoBehaviour
         {
             Debug.Log("Second instance of Cache");
         }
+    }
+    public static void setScore(int newScore)
+    {
+        score = newScore;
+    }
+
+    public static int getScore()
+    {
+        return score;
     }
 
     public Cache getCache()

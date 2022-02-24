@@ -32,10 +32,10 @@ public class Horde : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    internal void Damage(float damage, GameObject attackingTurret)
+
+    private void RunTakeDamageEffect(float damage, GameObject attackingTurret)
     {
-        health -= damage;
-        Debug.Log($"Health {health}");
+
         GameObject particleObj = Instantiate(damageEffect, gameObject.transform.position,
             Quaternion.LookRotation(
                 attackingTurret.transform.position - gameObject.transform.position));
@@ -44,6 +44,14 @@ public class Horde : MonoBehaviour
             minSizeParticle), maxSizeParticle);
 
         Destroy(particleObj, particleLifetime);
+    }
+
+    internal void Damage(float damage, GameObject attackingTurret)
+    {
+        health -= damage;
+        Debug.Log($"Health {health}");
+
+        RunTakeDamageEffect(damage, attackingTurret);
 
         //damageEffect.Play();
         if (health < 0)
