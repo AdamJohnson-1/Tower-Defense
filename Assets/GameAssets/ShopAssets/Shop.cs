@@ -34,27 +34,15 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void PurchaseStandardTurret()
+    public void clickPurchaseTurretButton(GameObject tower, GameObject towerHologram)
     {
-        actionHandlerScript.selectTowerToPlace(standardTower, standardTowerHologram);
-    }
-
-    public void PurchaseAnotherTurret()
-    {
-        if (checkIfMoneyGreaterOrEqual(120))
-        {
-            changeMoney(-120);
-        }
-        else
-        {
-            errorMessageScript.ShowMessage("Insufficient money.");
-        }
+        actionHandlerScript.selectTowerToPlace(tower, towerHologram);
     }
 
     public void changeMoney(int amount)
     {
         currentMoney += amount;
-        moneyText.text = "$" + currentMoney;
+        moneyText.text = "  Cash: $" + currentMoney;
     }
 
     public int getMoney()

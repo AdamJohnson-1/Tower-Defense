@@ -117,11 +117,9 @@ public class ActionHandlerScript : MonoBehaviour
             if (parentScript.towerHandler.checkIfValidTowerLocation(nodeGameObject) &&
                 parentScript.shopScript.checkIfMoneyGreaterOrEqual(towerCost))
             {
-                Debug.Log(parentScript.validTowerPlacementMaterial);
                 holoRenderer.material = parentScript.validTowerPlacementMaterial;
             } else
             {
-                Debug.Log(parentScript.invalidTowerPlacementMaterial);
                 holoRenderer.material = parentScript.invalidTowerPlacementMaterial;
             }
 
@@ -193,9 +191,10 @@ public class ActionHandlerScript : MonoBehaviour
                 return;
             }
 
-            //finally subtracts tower cost and deselects tower if player can't but any more.
+            //finally subtracts tower cost and deselects tower if player can't buy any more.
             parentScript.shopScript.changeMoney(-towerCost);
-            if (!parentScript.shopScript.checkIfMoneyGreaterOrEqual(towerCost))
+            if (!Input.GetKey(KeyCode.RightShift) &&
+                !Input.GetKey(KeyCode.LeftShift))
             {
                 parentScript.deselectTowerToPlace();
                 return;

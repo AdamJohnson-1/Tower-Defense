@@ -10,6 +10,8 @@ public class Node : MonoBehaviour
     private Color startColor;
     public GameObject tower;
 
+    public bool hasTower = false;
+
     private MouseInputHandlerScript mouseInputHandler;
 
     // Start is called before the first frame update
