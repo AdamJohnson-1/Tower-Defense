@@ -1,32 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CameraController : MonoBehaviour
 {
 
-    private bool doMovement = true;
+    private float scrollSpeed = 4f;
+    private float minY = 7f;
+    private float maxY = 25f;
 
-    public float panSpeed = 12f;
-    public float panBorderThickness = 15f;
-    public float scrollSpeed = 2f;
-    public float minY = 7f;
-    public float maxY = 25f;
+    private float targetCameraHeight;
+    private float currentCameraHeight;
+    private float minMaxHeightDiff;
 
-    public float minX = 6f;
-    public float maxX = 42f;
-    public float minZ = -2f;
-    public float maxZ = 40f;
+    private float panSpeed = 11f;
+    private float panBorderThickness = 15f;
+    private float minX = 6f;
+    private float maxX = 42f;
+    private float minZ = -2f;
+    private float maxZ = 40f;
+
+    void Start()
+    {
+        currentCameraHeight = transform.position.y;
+        targetCameraHeight = transform.position.y;
+        minMaxHeightDiff = maxY - minY;
+    }
 
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-            doMovement = !doMovement;
-
-        if(!doMovement)
-            return;
 
 
         //camera key input sensing
@@ -53,9 +57,25 @@ public class CameraController : MonoBehaviour
         pos.z = Mathf.Clamp(pos.z, minZ, maxZ);
 
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        pos.y -= scroll * 1000 * scrollSpeed * Time.deltaTime;
-        pos.y = Mathf.Clamp(pos.y, minY, maxY);
-        transform.position = pos;
+        targetCameraHeight -= scroll * 1000 * scrollSpeed * Time.deltaTime;
+        targetCameraHeight = Mathf.Clamp(targetCameraHeight, minY, maxY);
 
+        if(pos.y > targetCameraHeight)
+        {
+            pos.y = Math.Max(pos.y + (targetCameraHeight - pos.y) / 20 - Time.deltaTime * 2, targetCameraHeight);
+        } else if (pos.y < targetCameraHeight)
+        {
+            pos.y = Math.Min(pos.y + (targetCameraHeight - pos.y) / 20 + Time.deltaTime * 2, targetCameraHeight);
+        }
+
+        transform.position = pos;
+        transform.rotation = Quaternion.Euler(getCameraAngleFromHeight(transform.position.y), 0, 0);
+
+    }
+
+    private float getCameraAngleFromHeight(float height)
+    {
+        float percentage = (height - minY) / minMaxHeightDiff;
+        return 30f * percentage + 40;
     }
 }

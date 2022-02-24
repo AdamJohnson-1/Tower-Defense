@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 //Cache will be used to store information that needs to be used by multiple objects and
 //will be implemented as a singleton
@@ -9,12 +10,17 @@ public class Cache : MonoBehaviour
 {
 
     public float totalLife = 100f;
-    public int startingGold = 100;
+    public  Text scoreText;
+    private static Text cacheScoreText;
 
     private float currentLife;
-    private int currentGold;
     private Cache cache;
     private static int score;
+
+    void Start()
+    {
+        Cache.cacheScoreText = scoreText;
+    }
 
     private void Awake()
     {
@@ -42,15 +48,6 @@ public class Cache : MonoBehaviour
         return cache;
     }
 
-    public void setCurrentGold(int gold)
-    {
-        currentGold = gold;
-    }
-    public int getCurrentGold()
-    {
-        return currentGold;
-    }
-
     public void setCurrentLife(float life)
     {
         currentLife = life;
@@ -60,4 +57,18 @@ public class Cache : MonoBehaviour
         return currentLife;
     }
 
+    private static int score = 0;
+    public static int getScore()
+    {
+        return Cache.score;
+    }
+    public static void incrementScore(int amount)
+    {
+        Cache.score += amount;
+        Cache.cacheScoreText.text = " Score: " + Cache.score;
+    }
+    public static void resetScore()
+    {
+        Cache.score = 0;
+    }
 }

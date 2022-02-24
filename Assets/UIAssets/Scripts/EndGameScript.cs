@@ -1,4 +1,5 @@
 using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class EndGameScript : MonoBehaviour
 {
     public string mainMenuScene;
-    private int curScoreincrementer = 0;
+    private int curScoreincrementer;
     private int totalScore;
 
     public Text scoreText;
@@ -15,7 +16,9 @@ public class EndGameScript : MonoBehaviour
     void Start()
     {
         //fetch player score
-        totalScore = 891;
+        curScoreincrementer = 0;
+        totalScore = Cache.getScore();
+        Cache.resetScore();
     }
 
     void Update()
@@ -23,7 +26,7 @@ public class EndGameScript : MonoBehaviour
 
         if (curScoreincrementer < totalScore)
         {
-            curScoreincrementer += 1;
+            curScoreincrementer += (int)Math.Ceiling(Time.deltaTime * totalScore / 3);
             if (curScoreincrementer > totalScore)
             {
                 curScoreincrementer = totalScore;

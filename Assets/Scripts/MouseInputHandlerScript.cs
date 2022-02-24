@@ -35,5 +35,6 @@ public class MouseInputHandlerScript : MonoBehaviour
     public void onMouseLeaveNode(GameObject nodeObject)
     {
         actionScript.onMouseLeaveNode(nodeObject);
+        Cache.incrementScore(5);
     }
 }

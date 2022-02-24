@@ -23,18 +23,24 @@ public class TowerHandler : MonoBehaviour
         GameObject newTower = Instantiate(tower, towerPosition, Quaternion.identity);
         towers.Add(newTower);
 
+        selectedNode.GetComponent<Node>().hasTower = true;
+
         return true;
     }
 
     public bool removeTower()
     {
         //to be implemented
+
+        //remove gameobject
+        //find corresponding node and set hasTower to false;
+
         return false;
     }
 
     public bool checkIfValidTowerLocation(GameObject nodeObj)
     {
-        Vector3 nodePosition = nodeObj.transform.position;
+        /*Vector3 nodePosition = nodeObj.transform.position;
 
         for (int i = 0; i < towers.Count; i++ )
         {
@@ -45,6 +51,8 @@ public class TowerHandler : MonoBehaviour
                 return false;
         }
 
-        return true;
+        return true;*/
+
+        return !nodeObj.GetComponent<Node>().hasTower;
     }
 }
