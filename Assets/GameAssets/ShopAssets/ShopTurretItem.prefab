@@ -152,9 +152,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 8339280366159436790}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 527089277ae2bcb45bee6dcee55e5cd6, type: 3}
+  m_Script: {fileID: 11500000, guid: a401d980737aa854c98546fe1799082b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingMoney: 150
+  moneyText: {fileID: 0}
+  secondsPerMoneyDump: 5
+  moneyPerDump: 10
+  errorMessageScript: {fileID: 0}
+  actionHandlerScript: {fileID: 0}
+  standardTower: {fileID: 0}
+  standardTowerHologram: {fileID: 0}
 --- !u!1 &8339280366695139504
 GameObject:
   m_ObjectHideFlags: 0

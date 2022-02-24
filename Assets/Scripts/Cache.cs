@@ -15,7 +15,7 @@ public class Cache : MonoBehaviour
 
     private float currentLife;
     private Cache cache;
-    private static int score;
+    private static int score = 0;
 
     void Start()
     {
@@ -33,15 +33,6 @@ public class Cache : MonoBehaviour
             Debug.Log("Second instance of Cache");
         }
     }
-    public static void setScore(int newScore)
-    {
-        score = newScore;
-    }
-
-    public static int getScore()
-    {
-        return score;
-    }
 
     public Cache getCache()
     {
@@ -57,7 +48,7 @@ public class Cache : MonoBehaviour
         return currentLife;
     }
 
-    private static int score = 0;
+
     public static int getScore()
     {
         return Cache.score;
