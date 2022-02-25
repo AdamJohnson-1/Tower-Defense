@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 657635410752272985}
   - component: {fileID: 1555535212368832940}
   - component: {fileID: 6667651149376979622}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TowerNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 6417110949305938717, guid: 3f48d8e20de174fd09379df985ff4ba7, type: 3}
+  hasTower: 0
 --- !u!114 &6667651149376979622
 MonoBehaviour:
   m_ObjectHideFlags: 0

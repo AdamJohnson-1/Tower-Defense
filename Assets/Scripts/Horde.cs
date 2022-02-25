@@ -42,7 +42,7 @@ public class Horde : MonoBehaviour
         var main = particleObj.GetComponentInChildren<ParticleSystem>().main;
         main.startSize = Mathf.Min(Mathf.Max(particleScale * damage / 100,
             minSizeParticle), maxSizeParticle);
-
+        ParticleSystem sys = particleObj.GetComponentInChildren<ParticleSystem>();
         Destroy(particleObj, particleLifetime);
     }
 
