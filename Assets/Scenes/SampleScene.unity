@@ -2197,7 +2197,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tower: {fileID: 2333254277994220799, guid: 1276807ff2b6149ccbbb6805495fac21, type: 3}
-  towerHologram: {fileID: 2333254277994220799, guid: 1276807ff2b6149ccbbb6805495fac21, type: 3}
+  towerHologram: {fileID: 5356851501508629139, guid: ec4204a87d4944e9988636886daea661, type: 3}
   shop: {fileID: 2120196495}
   towerName: Gatling Turret
   nameText: {fileID: 1618806269}
