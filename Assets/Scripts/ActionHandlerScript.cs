@@ -113,14 +113,20 @@ public class ActionHandlerScript : MonoBehaviour
             towerHologram.SetActive(true);
 
             //checks if placement is valid and if you have enough money
-            Renderer holoRenderer = towerHologram.GetComponentInChildren<Renderer>();
+            Renderer[] holoRenderers = towerHologram.GetComponentsInChildren<Renderer>();
             if (parentScript.towerHandler.checkIfValidTowerLocation(nodeGameObject) &&
                 parentScript.shopScript.checkIfMoneyGreaterOrEqual(towerCost))
             {
-                holoRenderer.material = parentScript.validTowerPlacementMaterial;
+                foreach (Renderer holoRenderer in holoRenderers)
+                {
+                    holoRenderer.material = parentScript.validTowerPlacementMaterial;
+                }
             } else
             {
-                holoRenderer.material = parentScript.invalidTowerPlacementMaterial;
+                foreach (Renderer holoRenderer in holoRenderers)
+                {
+                    holoRenderer.material = parentScript.invalidTowerPlacementMaterial;
+                }
             }
 
             //places hologram

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 28713273278105593}
   - component: {fileID: 443058963399212362}
   m_Layer: 0
-  m_Name: gatling-tower
+  m_Name: GatlingSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
