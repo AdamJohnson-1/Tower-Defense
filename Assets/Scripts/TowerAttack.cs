@@ -6,8 +6,10 @@ using UnityEngine;
 public abstract class TowerAttack : MonoBehaviour
 {
     public float shootDelay = 0.35f;
-    public float towerRange = 20.0f;
     private float countUpToShoot = 0;
+
+    public abstract float getTowerRange();
+    public abstract int getCost();
 
     // Update is called once per frame
 
@@ -60,6 +62,6 @@ public abstract class TowerAttack : MonoBehaviour
 
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(gameObject.transform.position, towerRange);
+        Gizmos.DrawWireSphere(gameObject.transform.position, getTowerRange());
     }
 }

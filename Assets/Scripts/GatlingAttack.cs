@@ -10,6 +10,10 @@ public class GatlingAttack : TowerAttack
     private Light pLight;
     private GameObject target;
 
+
+    public override float getTowerRange() {return 20.0f;}
+    public override int getCost() { return 120; }
+
     public void Awake()
     {
         anim = gameObject.GetComponent<Animator>();
@@ -41,7 +45,7 @@ public class GatlingAttack : TowerAttack
         {
             foreach (GameObject enemy in enemies)
             {
-                if (CalcDistance(enemy) < towerRange)
+                if (CalcDistance(enemy) < getTowerRange())
                 {
                     target = enemy;
                     break;

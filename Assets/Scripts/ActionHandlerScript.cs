@@ -73,12 +73,12 @@ public class ActionHandlerScript : MonoBehaviour
 
     class TowerPlacingState : ActionState
     {
-        public GameObject test;
+
+        private GameObject nodeGameObject = null;
 
         private GameObject tower;
-        private GameObject nodeGameObject;
-
         private GameObject towerHologram;
+
         private static Color validTowerColor = new Color(0f, 0.77f, 0.2f, 0.3f);
         private static Color invalidTowerColor = new Color(0.9f, 0f, 0f, 0.3f);
 
@@ -92,10 +92,8 @@ public class ActionHandlerScript : MonoBehaviour
 
             towerHologram = GameObject.Instantiate(holo);
             towerHologram.SetActive(false);
-            //towerHologramRenderer = towerHologram.GetComponent<Renderer>();
-            //towerHologramRenderer.material.color = TowerPlacingState.validTowerColor;
 
-    }
+        }
 
         public override void leaveState(ActionState newState)
         {
@@ -162,7 +160,7 @@ public class ActionHandlerScript : MonoBehaviour
             if (GameObject.ReferenceEquals(nodeGameObject, null))
                 return;
 
-            //returns if player's cursor is not on a node
+            //returns if for some reason a tower isn't selected
             if (GameObject.ReferenceEquals(tower, null))
                 return;
 
@@ -197,7 +195,7 @@ public class ActionHandlerScript : MonoBehaviour
                 return;
             }
 
-            //finally subtracts tower cost and deselects tower if player can't buy any more.
+            //finally subtracts tower cost and deselects tower if player isn't pressing shift
             parentScript.shopScript.changeMoney(-towerCost);
             if (!Input.GetKey(KeyCode.RightShift) &&
                 !Input.GetKey(KeyCode.LeftShift))
@@ -206,6 +204,7 @@ public class ActionHandlerScript : MonoBehaviour
                 return;
             }
 
+            //"leaves" the node so a red hologram doesn't immediately appear
             onMouseLeaveNode(nodeGameObject);
         }
 
