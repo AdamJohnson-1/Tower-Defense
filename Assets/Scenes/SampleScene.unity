@@ -1868,7 +1868,7 @@ MonoBehaviour:
   groundNode: {fileID: 4532164083471019806, guid: 0022245e2f2384391b1294a36df9116b, type: 3}
   nodeParent: {fileID: 1583581187}
   navMeshGround: {fileID: 2106252241}
-  groundScale: 1
+  groundScale: 4
   maxColorDarken: 0.8
 --- !u!1 &1519001318
 GameObject:

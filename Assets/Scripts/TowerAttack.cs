@@ -21,19 +21,22 @@ public abstract class TowerAttack : MonoBehaviour
     void Update()
     {
         countUpToShoot += Time.deltaTime;
-        GameObject[] enemies = GetHorde();
-        enemies = FilterTargets(enemies);
 
-        if (countUpToShoot > shootDelay && enemies != null)
+        if (countUpToShoot > shootDelay)
         {
-            foreach (GameObject enemy in enemies)
+            GameObject[] enemies = GetHorde();
+            if (enemies != null)
             {
-                float damage = GetDamage(enemy);
-                enemy.GetComponent<Horde>().Damage(damage, gameObject);
+                enemies = FilterTargets(enemies);
+                foreach (GameObject enemy in enemies)
+                {
+                    float damage = GetDamage(enemy);
+                    enemy.GetComponent<Horde>().Damage(damage, gameObject);
 
+                }
+                countUpToShoot = 0;
+                AnimateFiring();
             }
-            countUpToShoot = 0;
-            AnimateFiring();
           
         }
         else
