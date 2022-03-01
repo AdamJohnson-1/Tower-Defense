@@ -3,17 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TeslaTower : MonoBehaviour
+public class TeslaTower : AttackTower
 {
-    public float shootDelay = 0.35f;
-    private float thisTime = 0;
     public float towerRange = 20.0f;
     public float maxDamage = 150f;
     public float minDamage = 1f;
+
     public float lightOnMaxTime = .1f;
     public ParticleSystem lightningSystem;
     private ParticleSystem[] systems;
-    private Boolean playing;
+    //private Boolean playing;
     private Light teslaBulb;
     private float lightOnTime;
 
@@ -30,13 +29,13 @@ public class TeslaTower : MonoBehaviour
         teslaBulb = gameObject.GetComponentInChildren<Light>();
         lightOnTime = 0f;
         teslaBulb.range = towerRange;
-        thisTime = shootDelay; // allow tower to shoot right after placement
+        thisTime = AttackDelay(); // allow tower to shoot right after placement
     }
 
-    void Update()
+    new void Update()
     {
-        thisTime += Time.deltaTime;
-        //Debug.Log($"Tower.update() {thisTime} {lastTime} ");
+        base.Update();
+
         if (lightOnTime < lightOnMaxTime)
         {
             lightOnTime += Time.deltaTime;
@@ -46,57 +45,48 @@ public class TeslaTower : MonoBehaviour
             teslaBulb.enabled = false;
             lightOnTime = 0f;
         }
-        
-        if (thisTime > shootDelay) { 
-            SendShock();
-            thisTime = 0;
-        }
     }
 
 
-    void SendShock()
+    public override float GetDamage(GameObject enemy)
     {
-        playing = false;
-        foreach (GameObject enemy in GetHorde()) {
-            float dist = CalcDistance(enemy);
-            if (dist < towerRange) {
-                playing = true;
-                Debug.Log("Shooting enemy");
-                float damage = (float)(maxDamage / Math.Pow(dist + 1, 2));
-                damage = Math.Max(minDamage, damage);
-                enemy.GetComponent<Horde>().Damage(damage, gameObject);
-            }
-        }
+        var damage = (float)(maxDamage / Math.Pow(CalcDistance(enemy) + 1, 2));
+        return Math.Max(minDamage, damage);
+    }
+
+    public override float AttackDelay()
+    {
+        return 0.35f;
+    }
+
+    public override List<GameObject> FilterTargets(List<GameObject> enemies)
+    {
+        var en = new List<GameObject> (enemies);
+        return en.FindAll(h => CalcDistance(h) < towerRange);
+    }
+
+    public override void Animate(List<GameObject> targetedEnemies)
+    {
         foreach (ParticleSystem system in systems)
         {
-            if (playing)
-            {
-                lightOnTime = 0f; //reset the light turn off countdown
-                teslaBulb.enabled = true;
-                system.Play();
-            }
-            else
-            {
-                system.Stop();
-            }
+            lightOnTime = 0f; //reset the light turn off countdown
+            teslaBulb.enabled = true;
+            system.Play();
         }
-    }
-
-    private float CalcDistance(GameObject enemy)
-    {
-        Vector3 towerPosition = gameObject.transform.position;
-        Vector3 enemyPosition = enemy.gameObject.transform.position;
-
-        return Vector3.Distance(towerPosition, enemyPosition);
-    }
-
-    private GameObject[] GetHorde()
-    {
-        return GameObject.FindGameObjectsWithTag("horde");
     }
 
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(gameObject.transform.position, towerRange);
+    }
+
+    public override float GetDefaultRange()
+    {
+        return towerRange;
+    }
+
+    public override int GetTowerPrice()
+    {
+        return 60;
     }
 }
