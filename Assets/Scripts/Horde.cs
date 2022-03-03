@@ -11,7 +11,7 @@ public class Horde : MonoBehaviour
     public float particleScale = 1f;
     public float particleLifetime = 1f;
 
-    private float health = 100f;
+    //private float health = 100f;
     // Start is called before the first frame update
     void Awake()
     {
@@ -23,7 +23,7 @@ public class Horde : MonoBehaviour
         
     }
 
-    internal void Damage(float damage)
+    /*internal void Damage(float damage)
     {
         health -= damage;
         Debug.Log($"Health {health}");
@@ -32,8 +32,17 @@ public class Horde : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    internal void Damage(float damage, GameObject attackingTurret)
+    {
+        RunTakeDamageEffect(damage, attackingTurret);
+        Damage(damage);
+    }*/
 
-    private void RunTakeDamageEffect(float damage, GameObject attackingTurret)
+
+
+    //At the moment, the only reason this script is used is for the particle effect.
+    //However, the particle effect should probably be moved to the Tower's attack script since different towers cause different effects.
+    public void RunTakeDamageEffect(float damage, GameObject attackingTurret)
     {
 
         GameObject particleObj = Instantiate(damageEffect, gameObject.transform.position,
@@ -46,17 +55,4 @@ public class Horde : MonoBehaviour
         Destroy(particleObj, particleLifetime);
     }
 
-    internal void Damage(float damage, GameObject attackingTurret)
-    {
-        health -= damage;
-        Debug.Log($"Health {health}");
-
-        RunTakeDamageEffect(damage, attackingTurret);
-
-        //damageEffect.Play();
-        if (health < 0)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

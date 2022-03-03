@@ -443,6 +443,7 @@ GameObject:
   - component: {fileID: 4057962679367890650}
   - component: {fileID: 4057962679367890651}
   - component: {fileID: 4057962679367890653}
+  - component: {fileID: 1429026236043912378}
   m_Layer: 0
   m_Name: Walker
   m_TagString: horde
@@ -530,6 +531,23 @@ MonoBehaviour:
   maxSizeParticle: 0.8
   particleScale: 0.8
   particleLifetime: 1
+--- !u!114 &1429026236043912378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4057962679367890660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec25c96aba21904f95e0e87db6ded15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAlive: 1
+  BaseLivesLostOnArrival: 5
+  StartingHealth: 100
+  DefaultMoveSpeed: 10
+  navMeshAgent: {fileID: 4057962679367890650}
 --- !u!1 &4512992574493655828
 GameObject:
   m_ObjectHideFlags: 0

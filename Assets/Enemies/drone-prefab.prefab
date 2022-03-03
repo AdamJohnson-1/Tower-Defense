@@ -159,7 +159,7 @@ GameObject:
   - component: {fileID: 6262926281428277152}
   m_Layer: 0
   m_Name: drone-prefab
-  m_TagString: Untagged
+  m_TagString: horde
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -284,6 +284,7 @@ GameObject:
   - component: {fileID: 3862580312147575648}
   - component: {fileID: 6234315963309347423}
   - component: {fileID: 5571560481074834889}
+  - component: {fileID: 1550110586252728514}
   - component: {fileID: 1783502028274412061}
   m_Layer: 0
   m_Name: sci-fi-drone-prefab
@@ -378,6 +379,23 @@ MonoBehaviour:
   maxSizeParticle: 0.8
   particleScale: 0.8
   particleLifetime: 1
+--- !u!114 &1550110586252728514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6596908994572002056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec25c96aba21904f95e0e87db6ded15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  IsAlive: 1
+  BaseLivesLostOnArrival: 5
+  StartingHealth: 100
+  DefaultMoveSpeed: 3.5
+  navMeshAgent: {fileID: 0}
 --- !u!136 &1783502028274412061
 CapsuleCollider:
   m_ObjectHideFlags: 0
