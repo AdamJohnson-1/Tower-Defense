@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class AttackTower : MonoBehaviour
 {
-    public float thisTime = 0;
+    public float countUpToShoot = 0;
 
     public abstract float GetDamage(GameObject enemy);
 
@@ -24,8 +24,8 @@ public abstract class AttackTower : MonoBehaviour
 
     public void Update()
     {
-        thisTime += Time.deltaTime;
-        if (thisTime > AttackDelay())
+        countUpToShoot += Time.deltaTime;
+        if (countUpToShoot > AttackDelay())
         {
             var enemies = GameObject.FindGameObjectsWithTag("horde");
             var filteredEnemies = FilterTargets(new List<GameObject> (enemies));
@@ -36,7 +36,7 @@ public abstract class AttackTower : MonoBehaviour
                 float damage = GetDamage(enemy);
                 enemy.GetComponent<Horde>().Damage(damage, gameObject);
             }
-        thisTime = 0;
+        countUpToShoot = 0;
         }
     }
 
@@ -56,6 +56,11 @@ public abstract class AttackTower : MonoBehaviour
 
     //The price an implementation of the tower can be purchased for
     public abstract int GetTowerPrice();
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(gameObject.transform.position, GetDefaultRange());
+    }
 
 
 }

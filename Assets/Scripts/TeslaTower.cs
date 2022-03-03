@@ -29,7 +29,7 @@ public class TeslaTower : AttackTower
         teslaBulb = gameObject.GetComponentInChildren<Light>();
         lightOnTime = 0f;
         teslaBulb.range = towerRange;
-        thisTime = AttackDelay(); // allow tower to shoot right after placement
+        countUpToShoot = AttackDelay(); // allow tower to shoot right after placement
     }
 
     new void Update()
