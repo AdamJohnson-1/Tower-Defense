@@ -67,11 +67,22 @@ public class TeslaTower : AttackTower
 
     public override void Animate(List<GameObject> targetedEnemies)
     {
-        foreach (ParticleSystem system in systems)
+        if (targetedEnemies.Count != 0)
         {
-            lightOnTime = 0f; //reset the light turn off countdown
             teslaBulb.enabled = true;
-            system.Play();
+            lightOnTime = 0f; //reset the light turn off countdown
+            foreach (ParticleSystem system in systems)
+            {
+                system.Play();
+            }
+        }
+        else
+        {
+            teslaBulb.enabled = false;
+            foreach (ParticleSystem system in systems)
+            {
+                system.Stop();
+            }
         }
     }
 

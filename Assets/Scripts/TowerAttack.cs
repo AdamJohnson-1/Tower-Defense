@@ -27,11 +27,13 @@ public abstract class TowerAttack : MonoBehaviour
             GameObject[] enemies = GetHorde();
             if (enemies != null)
             {
+                
                 enemies = FilterTargets(enemies);
                 foreach (GameObject enemy in enemies)
                 {
                     float damage = GetDamage(enemy);
-                    enemy.GetComponent<Horde>().Damage(damage, gameObject);
+                    enemy.GetComponent<Horde>().RunTakeDamageEffect(damage, gameObject);
+                    enemy.GetComponent<MobScript>().TakeDamage(damage);
 
                 }
                 countUpToShoot = 0;

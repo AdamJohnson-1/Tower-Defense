@@ -34,7 +34,8 @@ public abstract class AttackTower : MonoBehaviour
             {
                 Debug.Log("Shooting enemy");
                 float damage = GetDamage(enemy);
-                enemy.GetComponent<Horde>().Damage(damage, gameObject);
+                enemy.GetComponent<Horde>().RunTakeDamageEffect(damage, gameObject);
+                enemy.GetComponent<MobScript>().TakeDamage(damage);
             }
         countUpToShoot = 0;
         }
