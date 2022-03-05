@@ -68,7 +68,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 4
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -123,8 +123,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAlive: 1
   BaseLivesLostOnArrival: 5
-  StartingHealth: 100
-  DefaultMoveSpeed: 3.5
+  StartingHealth: 50
+  DefaultMoveSpeed: 4
   navMeshAgent: {fileID: 7347541852106494248}
   healthBar: {fileID: 6363271541855646248}
 --- !u!136 &5236938233754613845

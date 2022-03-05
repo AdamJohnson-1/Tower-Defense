@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   countUpToShoot: 0
-  attackDamage: 2
+  attackDamage: 5
   attackDelay: 0.2
 --- !u!1 &2450326459835983581
 GameObject:
