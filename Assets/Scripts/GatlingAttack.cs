@@ -18,7 +18,7 @@ public class GatlingAttack : AttackTower
 
         if (target != null)
         {
-            Vector3 rotation = new Vector3();
+            Vector3 rotation;
             rotation = target.transform.position - gameObject.transform.position;
             rotation.y = 0;
             //rotation.z = 0;
@@ -74,29 +74,16 @@ public class GatlingAttack : AttackTower
 
     public override List<GameObject> FilterTargets(List<GameObject> enemies)
     {
-        List<GameObject> myEnemies = new List<GameObject>();
-        if (target != null && CalcDistance(target) < GetDefaultRange())
+        List<GameObject> enemiesToAttack = new AttackFastestStrategy(enemies).selectTargets(this);
+        if (enemiesToAttack.Count > 0)
+        {
+            target = enemiesToAttack[0];
+        }
+        else
         {
             target = null;
         }
-        if (target == null)
-        {
-            foreach (GameObject enemy in enemies)
-            {
-                if (CalcDistance(enemy) < GetDefaultRange())
-                {
-                    target = enemy;
-                    break;
-                }
-            }
-            if (target == null)
-            {
-                return myEnemies;
-            }
-        }
-        
-        myEnemies.Insert(0,target);
-        return myEnemies;
+        return enemiesToAttack;
     }
 
 }

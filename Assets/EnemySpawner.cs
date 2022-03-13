@@ -8,6 +8,7 @@ public class EnemySpawner : MonoBehaviour
     private float timePassed;
     private float countUpToNextWave;
     public float waveScaling = .5f;
+    public Transform destination;
 
     public List<GameObject> enemies;
     public List<float> enemyDangerLvl;
@@ -78,18 +79,19 @@ public class EnemySpawner : MonoBehaviour
             spawnEnemy(enemyToSpawn);
         }
         
-        
     }
     private void spawnEnemy(GameObject enemy)
     {
         float positionOnEdge = Random.Range(.1f, 49.9f);
         if (Random.Range(0,2) == 1)
         {
-            Instantiate(enemy, new Vector3(49, 0, positionOnEdge), Quaternion.identity);
+            Instantiate(enemy, new Vector3(49, 0, positionOnEdge), Quaternion.RotateTowards(
+                Quaternion.Euler(49, 0, positionOnEdge), destination.rotation, 360f));
         }
         else
         {
-            Instantiate(enemy, new Vector3(positionOnEdge, 0, 49), Quaternion.identity);
+            Instantiate(enemy, new Vector3(positionOnEdge, 0, 49), Quaternion.RotateTowards(
+                Quaternion.Euler(49, 0, positionOnEdge), destination.rotation, 360f));
         }
     }
 }
