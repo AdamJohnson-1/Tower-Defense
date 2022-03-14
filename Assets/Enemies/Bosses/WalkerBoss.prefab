@@ -583,7 +583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   IsAlive: 1
   BaseLivesLostOnArrival: 10
-  StartingHealth: 300
+  StartingHealth: 400
   DefaultMoveSpeed: 2.5
   navMeshAgent: {fileID: 4762628555367537887}
   healthBar: {fileID: 357434899137067333}
