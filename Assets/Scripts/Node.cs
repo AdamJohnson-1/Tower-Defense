@@ -8,7 +8,7 @@ public class Node : MonoBehaviour
 {
     private Renderer myRenderer;
     private Color startColor;
-    public GameObject tower;
+    //public GameObject tower;
 
     public bool hasTower = false;
 
