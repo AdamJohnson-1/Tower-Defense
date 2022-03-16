@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GatlingAttack : AttackTower
 {
+    [Header("Gatling Settings")]
     public float attackDamage = 5f;
     public float attackDelay = 5f;
     private Animator anim;

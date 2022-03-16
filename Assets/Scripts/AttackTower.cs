@@ -4,8 +4,15 @@ using UnityEngine;
 
 public abstract class AttackTower : MonoBehaviour
 {
-    public float countUpToShoot = 0;
+    [Header("Effect Settings")]
+    public GameObject damageEffect;
+    public bool damageEffectEnabled = true;
+    public float minSizeParticle = .4f;
+    public float maxSizeParticle = 2f;
+    public float particleScale = 1f;
+    public float particleLifetime = 1f;
 
+    protected float countUpToShoot = 0;
     public abstract float GetDamage(GameObject enemy);
 
     //Returns a float, example 2.5 seconds
@@ -34,12 +41,30 @@ public abstract class AttackTower : MonoBehaviour
             {
                 Debug.Log("Shooting enemy");
                 float damage = GetDamage(enemy);
-                enemy.GetComponent<Horde>().RunTakeDamageEffect(damage, gameObject);
+                RunTakeDamageEffect(damage, enemy);
                 enemy.GetComponent<MobScript>().TakeDamage(damage);
             }
         countUpToShoot = 0;
         }
     }
+
+    public void RunTakeDamageEffect(float damage, GameObject enemy)
+    {
+        if (damageEffectEnabled)
+        {
+
+            GameObject particleObj = Instantiate(damageEffect, enemy.transform.position,
+            Quaternion.LookRotation(
+                gameObject.transform.position - enemy.transform.position));
+            var main = particleObj.GetComponentInChildren<ParticleSystem>().main;
+            main.startSize = Mathf.Min(Mathf.Max(particleScale * damage / 100,
+                minSizeParticle), maxSizeParticle);
+            //ParticleSystem sys = particleObj.GetComponentInChildren<ParticleSystem>();
+            Destroy(particleObj, particleLifetime);
+        }
+    }
+
+
 
 
     public float CalcDistance(GameObject enemy)

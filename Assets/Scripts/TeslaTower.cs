@@ -17,7 +17,6 @@ public class TeslaTower : AttackTower
     private float lightOnTime;
 
 
-
     // Update is called once per frame
     // I am programming the towers to periodically
     // send out a massive shock. Kind of like an EMP shockwave.
