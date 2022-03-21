@@ -134,9 +134,9 @@ public class ActionHandlerScript : MonoBehaviour
             float z = nodePosition.z;
 
             towerHologram.transform.position = new Vector3(
-                x + 1,
-                y + 1,
-                z - 1);
+                x + TowerHandler.relativeTowerPosX,
+                y + TowerHandler.relativeTowerPosY,
+                z + TowerHandler.relativeTowerPosZ);
         }
 
 

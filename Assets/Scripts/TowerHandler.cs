@@ -5,6 +5,10 @@ using UnityEngine;
 public class TowerHandler : MonoBehaviour
 {
 
+    public static float relativeTowerPosX = 1.25f;
+    public static float relativeTowerPosY = 1.9f;
+    public static float relativeTowerPosZ = -1.25f;
+
     private List<GameObject> towers = new List<GameObject>();
 
     public bool addTower(GameObject tower, GameObject selectedNode)
@@ -16,9 +20,9 @@ public class TowerHandler : MonoBehaviour
         float z = nodePosition.z;
 
         Vector3 towerPosition = new Vector3(
-            x + 1,
-            y + 1,
-            z - 1);
+            x + TowerHandler.relativeTowerPosX,
+            y + TowerHandler.relativeTowerPosY,
+            z + TowerHandler.relativeTowerPosZ);
 
         GameObject newTower = Instantiate(tower, towerPosition, Quaternion.identity);
         towers.Add(newTower);
@@ -40,19 +44,6 @@ public class TowerHandler : MonoBehaviour
 
     public bool checkIfValidTowerLocation(GameObject nodeObj)
     {
-        /*Vector3 nodePosition = nodeObj.transform.position;
-
-        for (int i = 0; i < towers.Count; i++ )
-        {
-            Vector3 towerPosition = towers[i].transform.position;
-            if (towerPosition.x == nodePosition.x + 1 &&
-                towerPosition.y == nodePosition.y + 1 &&
-                towerPosition.z == nodePosition.z - 1)
-                return false;
-        }
-
-        return true;*/
-
         return !nodeObj.GetComponent<Node>().hasTower;
     }
 }
