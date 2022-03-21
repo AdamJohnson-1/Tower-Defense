@@ -10,11 +10,41 @@ public class Horde : MonoBehaviour
     public float maxSizeParticle = 2f;
     public float particleScale = 1f;
     public float particleLifetime = 1f;
+    public Material holoMat;
+
+    private List<Material> materials;
+    private Renderer[] enemyRenderers;
 
     //private float health = 100f;
     // Start is called before the first frame update
     void Awake()
     {
+        //materials = new List<Material>();
+        //enemyRenderers = GetComponentsInChildren<Renderer>();
+        //for (int i = 0; i < enemyRenderers.Length; i++)
+        //{
+        //    materials.Add(enemyRenderers[i].material);
+            
+        //}
+        //SwitchToHoloMat();
+        //Invoke("SwitchToNormalMat", 5f);
+                
+    }
+
+    void SwitchToHoloMat()
+    {
+        for (int i = 0; i < enemyRenderers.Length; i++)
+        {
+            enemyRenderers[i].material = holoMat;
+        }
+    }
+
+    void SwitchToNormalMat()
+    {
+        for (int i = 0; i < enemyRenderers.Length; i++)
+        {
+            enemyRenderers[i].material = materials[i];
+        }
     }
 
     // Update is called once per frame

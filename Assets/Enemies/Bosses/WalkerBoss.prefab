@@ -569,6 +569,7 @@ MonoBehaviour:
   maxSizeParticle: 0.8
   particleScale: 0.8
   particleLifetime: 1
+  holoMat: {fileID: 2100000, guid: 4cba022e49a394281ba792644485ddfd, type: 2}
 --- !u!114 &7610077544184794815
 MonoBehaviour:
   m_ObjectHideFlags: 0
