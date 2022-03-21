@@ -9,7 +9,6 @@ public class ActionHandlerScript : MonoBehaviour
     private TowerHandler towerHandler;
 
     public ErrorMessageScript errorMessageScript;
-    public Shop shopScript;
 
     public Canvas towerPlacementTip;
     public Material invalidTowerPlacementMaterial;
@@ -82,13 +81,16 @@ public class ActionHandlerScript : MonoBehaviour
         private static Color validTowerColor = new Color(0f, 0.77f, 0.2f, 0.3f);
         private static Color invalidTowerColor = new Color(0.9f, 0f, 0f, 0.3f);
 
-        //private float towerRange = 20;//placeholder until we get abstracted tower ranges
-        private int towerCost = 10;//placeholder until we get abstracted tower costs
+        private float towerRange;//placeholder until we get abstracted tower ranges
+        private int towerCost;
 
         public TowerPlacingState(ActionHandlerScript script, GameObject towerArg, GameObject holo) : base(script)
         {
             parentScript.towerPlacementTip.gameObject.SetActive(true);
             tower = towerArg;
+
+            towerCost = tower.GetComponent<AttackTower>().GetTowerPrice();
+            towerRange = tower.GetComponent<AttackTower>().GetDefaultRange();
 
             towerHologram = GameObject.Instantiate(holo);
             towerHologram.SetActive(false);
@@ -113,7 +115,7 @@ public class ActionHandlerScript : MonoBehaviour
             //checks if placement is valid and if you have enough money
             Renderer[] holoRenderers = towerHologram.GetComponentsInChildren<Renderer>();
             if (parentScript.towerHandler.checkIfValidTowerLocation(nodeGameObject) &&
-                parentScript.shopScript.checkIfMoneyGreaterOrEqual(towerCost))
+                Shop.checkIfMoneyGreaterOrEqual(towerCost))
             {
                 foreach (Renderer holoRenderer in holoRenderers)
                 {
@@ -170,7 +172,7 @@ public class ActionHandlerScript : MonoBehaviour
         private void attemptPlaceTower()
         {
             //checks if player has engouh money
-            if (!parentScript.shopScript.checkIfMoneyGreaterOrEqual(towerCost))
+            if (!Shop.checkIfMoneyGreaterOrEqual(towerCost))
             {
                 parentScript.errorMessageScript.ShowMessage("Not enough money.");
                 return;
@@ -196,7 +198,7 @@ public class ActionHandlerScript : MonoBehaviour
             }
 
             //finally subtracts tower cost and deselects tower if player isn't pressing shift
-            parentScript.shopScript.changeMoney(-towerCost);
+            Shop.changeMoney(-towerCost);
             if (!Input.GetKey(KeyCode.RightShift) &&
                 !Input.GetKey(KeyCode.LeftShift))
             {

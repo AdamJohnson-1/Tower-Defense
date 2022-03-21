@@ -38,6 +38,6 @@ public class LaserTower : AttackTower
 
     public override int GetTowerPrice()
     {
-        return 80;
+        return 120;
     }
 }

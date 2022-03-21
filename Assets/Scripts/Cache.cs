@@ -9,11 +9,9 @@ using UnityEngine.UI;
 public class Cache : MonoBehaviour
 {
 
-    public float totalLife = 100f;
     public  Text scoreText;
     private static Text cacheScoreText;
 
-    private float currentLife;
     private Cache cache;
     private static int score = 0;
 
@@ -39,16 +37,6 @@ public class Cache : MonoBehaviour
         return cache;
     }
 
-    public void setCurrentLife(float life)
-    {
-        currentLife = life;
-    }
-    public float getCurrentLife()
-    {
-        return currentLife;
-    }
-
-
     public static int getScore()
     {
         return Cache.score;
@@ -56,7 +44,7 @@ public class Cache : MonoBehaviour
     public static void incrementScore(int amount)
     {
         Cache.score += amount;
-        Cache.cacheScoreText.text = " Score: " + Cache.score;
+        Cache.cacheScoreText.text = Cache.score.ToString();
     }
     public static void resetScore()
     {
