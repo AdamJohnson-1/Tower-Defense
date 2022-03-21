@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.019311178, g: 0.014617331, b: 0.010036879, a: 1}
+  m_IndirectSpecularColor: {r: 0.019311193, g: 0.014617336, b: 0.010036899, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10992,6 +10992,7 @@ GameObject:
   - component: {fileID: 8051499406591120105}
   - component: {fileID: 6830571862619977828}
   - component: {fileID: 2784698195717481234}
+  - component: {fileID: 211350780873297012}
   m_Layer: 0
   m_Name: Cube.155
   m_TagString: Untagged
@@ -10999,6 +11000,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &211350780873297012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211350780873297011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 4
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!108 &211810982576034311
 Light:
   m_ObjectHideFlags: 0
@@ -22422,6 +22439,7 @@ GameObject:
   - component: {fileID: 6868712900753353718}
   - component: {fileID: 8160934139109514981}
   - component: {fileID: 3597395168497930826}
+  - component: {fileID: 6407730159155521214}
   m_Layer: 0
   m_Name: Cube.156
   m_TagString: Untagged
@@ -22429,6 +22447,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6407730159155521214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6407730159155521213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 4
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
 --- !u!1 &6458859408661959485
 GameObject:
   m_ObjectHideFlags: 0

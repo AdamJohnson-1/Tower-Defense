@@ -13,8 +13,8 @@ NavMeshProjectSettings:
     cost: 2
   - name: Fly
     cost: 3
-  - name: 
-    cost: 1
+  - name: Slower
+    cost: 3
   - name: 
     cost: 1
   - name: 

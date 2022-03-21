@@ -83,15 +83,15 @@ public class EnemySpawner : MonoBehaviour
     private void spawnEnemy(GameObject enemy)
     {
         float positionOnEdge = Random.Range(.1f, 49.9f);
-        if (Random.Range(0,2) == 1)
-        {
-            Instantiate(enemy, new Vector3(49, 0, positionOnEdge), Quaternion.RotateTowards(
-                Quaternion.Euler(49, 0, positionOnEdge), destination.rotation, 360f));
-        }
-        else
-        {
-            Instantiate(enemy, new Vector3(positionOnEdge, 0, 49), Quaternion.RotateTowards(
-                Quaternion.Euler(49, 0, positionOnEdge), destination.rotation, 360f));
-        }
+        //if (Random.Range(0,2) == 1)
+        //{
+        Instantiate(enemy, new Vector3(57f, 0, positionOnEdge), Quaternion.RotateTowards(
+            Quaternion.Euler(49, 0, positionOnEdge), destination.rotation, 360f));
+        //}
+        //else
+        //{
+        //    Instantiate(enemy, new Vector3(positionOnEdge, 0, 49), Quaternion.RotateTowards(
+        //        Quaternion.Euler(49, 0, positionOnEdge), destination.rotation, 360f));
+        //}
     }
 }
