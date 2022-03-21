@@ -97,6 +97,6 @@ public class TeslaTower : AttackTower
 
     public override int GetTowerPrice()
     {
-        return 60;
+        return 70;
     }
 }

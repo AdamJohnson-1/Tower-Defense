@@ -18,6 +18,7 @@ public abstract class AttackTower : MonoBehaviour
     //Returns a float, example 2.5 seconds
     public abstract float AttackDelay();
 
+
     //This is called when the tower attacks or does it's special effect
     public virtual void Animate(List<GameObject> targetedEnemies)
     {
@@ -78,8 +79,6 @@ public abstract class AttackTower : MonoBehaviour
 
     //Used solely for the interface when placing a tower. 
     public abstract float GetDefaultRange();
-
-
     //The price an implementation of the tower can be purchased for
     public abstract int GetTowerPrice();
 

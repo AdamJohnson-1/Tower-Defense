@@ -582,7 +582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAlive: 1
-  BaseLivesLostOnArrival: 10
+  BaseLivesLostOnArrival: 8
+  ScoreWorth: 100
+  MoneyWorth: 150
   StartingHealth: 400
   DefaultMoveSpeed: 2.5
   navMeshAgent: {fileID: 4762628555367537887}
