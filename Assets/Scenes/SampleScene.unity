@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.019311178, g: 0.014617331, b: 0.010036879, a: 1}
+  m_IndirectSpecularColor: {r: 0.019311193, g: 0.014617336, b: 0.010036899, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7839,7 +7839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitBetweenWaves: 5
-  waveScaling: 1
+  waveScaling: 1.5
   destination: {fileID: 8119214459942953294}
   enemies:
   - {fileID: 4057962679367890660, guid: 1fef13efb32864ea4995f9c57ef66eb9, type: 3}
