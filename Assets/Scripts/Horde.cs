@@ -23,12 +23,15 @@ public class Horde : MonoBehaviour
         //enemyRenderers = GetComponentsInChildren<Renderer>();
         //for (int i = 0; i < enemyRenderers.Length; i++)
         //{
-        //    materials.Add(enemyRenderers[i].material);
-            
+        //    Material[] myMats = enemyRenderers[i].materials;
+        //    foreach (Material mat in myMats) {
+        //        materials.Add(mat);
+        //    }
+
         //}
         //SwitchToHoloMat();
         //Invoke("SwitchToNormalMat", 5f);
-                
+
     }
 
     void SwitchToHoloMat()
