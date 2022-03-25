@@ -23,6 +23,9 @@ public class MobScript : MonoBehaviour
     private Vector3 destination;
 
     public GameObject healthBar;
+    public GameObject deathEffect;
+    public float deathEffectLifetime = 2f;
+
     private HealthBarScript healthBarScript;
 
     void Start()
@@ -70,7 +73,9 @@ public class MobScript : MonoBehaviour
     {
         Health = 0;
         IsAlive = false;
-
+        GameObject myDeathEffect = Instantiate(deathEffect, gameObject.transform.position,
+            Quaternion.identity);
+        Destroy(myDeathEffect, deathEffectLifetime);
         Destroy(gameObject);
         //destroy object logic should be in the EnemyHandler
         //we should call the enemyHandler function from here

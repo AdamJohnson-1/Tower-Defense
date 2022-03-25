@@ -168,7 +168,6 @@ GameObject:
   - component: {fileID: 2291552357779590032}
   - component: {fileID: 7347541852106494248}
   - component: {fileID: 498122064754835479}
-  - component: {fileID: 2107467517058826113}
   - component: {fileID: 5038977587377621642}
   - component: {fileID: 5236938233754613845}
   m_Layer: 0
@@ -248,24 +247,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639161b7c2c7f4ab0a1d1c99b79d5794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2107467517058826113
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2078131588320464853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8686f8f66cffc4d98ab2d809f947a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageEffect: {fileID: 765516873093873642, guid: 2d3f8d265c74d4d2caf445f208020be4, type: 3}
-  minSizeParticle: 0.2
-  maxSizeParticle: 0.8
-  particleScale: 0.8
-  particleLifetime: 1
-  holoMat: {fileID: 2100000, guid: 4cba022e49a394281ba792644485ddfd, type: 2}
 --- !u!114 &5038977587377621642
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -279,13 +260,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAlive: 1
-  BaseLivesLostOnArrival: 1
+  BaseLivesLostOnArrival: 2
   ScoreWorth: 10
   MoneyWorth: 5
   StartingHealth: 250
   DefaultMoveSpeed: 4
   navMeshAgent: {fileID: 7347541852106494248}
   healthBar: {fileID: 6363271541855646248}
+  deathEffect: {fileID: 7974185464676064024, guid: 4fb9719e35ea94186a286e224d50b716, type: 3}
+  deathEffectLifetime: 2
 --- !u!136 &5236938233754613845
 CapsuleCollider:
   m_ObjectHideFlags: 0
