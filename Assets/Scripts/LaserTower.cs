@@ -4,26 +4,39 @@ using UnityEngine;
 
 public class LaserTower : AttackTower
 {
+    private Animator anim;
+
+
+    private void Awake()
+    {
+        anim = gameObject.GetComponent<Animator>();
+        countUpToShoot = AttackDelay(); // allow tower to shoot right after placement
+    }
     public override float AttackDelay()
     {
         return 3f;
     }
 
+    GameObject biggest = null;
     public override List<GameObject> FilterTargets(List<GameObject> enemies)
     {
-        GameObject closest = null;
-        var dist = float.PositiveInfinity;
+        if (enemies.Contains(biggest)) { return new List<GameObject> { biggest }; }
+
+        var health = 0f;
         foreach (GameObject e in enemies)
         {
-            if (CalcDistance(e) < dist)
+            var mob = e.GetComponent<MobScript>();
+            var h = mob.Health;
+            if (h > health)
             {
-                closest = e;
+                health = h;
+                biggest = e;
             }
         }
         
 
-        if (closest == null) { return new List<GameObject> { }; }
-        return new List<GameObject> { closest };
+        if (biggest == null) { return new List<GameObject> { }; }
+        return new List<GameObject> { biggest };
     }
 
     public override float GetDamage(GameObject enemy)
@@ -49,5 +62,37 @@ public class LaserTower : AttackTower
     public override int GetTowerUpgradePrice()
     {
         return GetTowerPrice() + (TowerLevel * 70);
+    }
+
+
+    new void Update()
+    {
+        base.Update();
+
+        if (biggest == null)
+        {
+            var enemies = GameObject.FindGameObjectsWithTag("horde");
+            FilterTargets(new List<GameObject>(enemies));
+        }
+        if (biggest != null)
+        {
+            Debug.Log("Turning to look at enemy");
+            Vector3 lookVector = biggest.transform.position - transform.position;
+            var rotation = Quaternion.LookRotation(lookVector);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
+        }
+    }
+
+    public override void Animate(List<GameObject> targetedEnemies)
+    {
+        if (targetedEnemies.Count == 0)
+        {
+            anim.enabled = false;
+        }
+        else
+        {
+            anim.enabled = true;
+            anim.Play("");
+        }
     }
 }

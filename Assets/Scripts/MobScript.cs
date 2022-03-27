@@ -15,7 +15,6 @@ public class MobScript : MonoBehaviour
     public int MoneyWorth = 10;
 
     public float StartingHealth = 100f;
-    private float Health;
 
     public float DefaultMoveSpeed = 3.5f;
 
@@ -27,6 +26,10 @@ public class MobScript : MonoBehaviour
     public float deathEffectLifetime = 2f;
 
     private HealthBarScript healthBarScript;
+
+    private float health;
+
+    public float Health { get => health; set => health = value; }
 
     void Start()
     {

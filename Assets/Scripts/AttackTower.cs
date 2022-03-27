@@ -54,17 +54,20 @@ public abstract class AttackTower : MonoBehaviour
         countUpToShoot += Time.deltaTime;
         if (countUpToShoot > AttackDelay())
         {
+            countUpToShoot = 0;
+
             var enemies = GameObject.FindGameObjectsWithTag("horde");
             var filteredEnemies = FilterTargets(new List<GameObject> (enemies));
             Animate(filteredEnemies);
+            Debug.Log("Shooting " + filteredEnemies.Count + " Enemies");
             foreach (GameObject enemy in filteredEnemies)
             {
                 //Debug.Log("Shooting enemy");
                 float damage = GetDamage(enemy);
-                RunTakeDamageEffect(damage, enemy);
                 enemy.GetComponent<MobScript>().TakeDamage(damage);
+
+                RunTakeDamageEffect(damage, enemy);
             }
-        countUpToShoot = 0;
         }
     }
 
