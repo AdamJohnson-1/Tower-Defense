@@ -13,8 +13,8 @@ NavMeshProjectSettings:
     cost: 2
   - name: Fly
     cost: 3
-  - name: 
-    cost: 1
+  - name: Slower
+    cost: 3
   - name: 
     cost: 1
   - name: 
@@ -76,7 +76,7 @@ NavMeshProjectSettings:
     agentRadius: 0.5
     agentHeight: 2
     agentSlope: 45
-    agentClimb: 2
+    agentClimb: 1.99
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     minRegionArea: 2

@@ -443,7 +443,6 @@ GameObject:
   - component: {fileID: 4057962679367890649}
   - component: {fileID: 4057962679367890650}
   - component: {fileID: 4057962679367890651}
-  - component: {fileID: 4057962679367890653}
   - component: {fileID: 1429026236043912378}
   m_Layer: 0
   m_Name: Walker
@@ -516,23 +515,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639161b7c2c7f4ab0a1d1c99b79d5794, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4057962679367890653
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4057962679367890660}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa8686f8f66cffc4d98ab2d809f947a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damageEffect: {fileID: 765516873093873642, guid: 2d3f8d265c74d4d2caf445f208020be4, type: 3}
-  minSizeParticle: 0.2
-  maxSizeParticle: 0.8
-  particleScale: 0.8
-  particleLifetime: 1
 --- !u!114 &1429026236043912378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -546,11 +528,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsAlive: 1
-  BaseLivesLostOnArrival: 5
+  BaseLivesLostOnArrival: 2
+  ScoreWorth: 20
+  MoneyWorth: 10
   StartingHealth: 150
   DefaultMoveSpeed: 2.5
   navMeshAgent: {fileID: 4057962679367890650}
   healthBar: {fileID: 9132556616224723776}
+  deathEffect: {fileID: 7974185464676064024, guid: 4fb9719e35ea94186a286e224d50b716, type: 3}
+  deathEffectLifetime: 2
 --- !u!1 &4512992574493655828
 GameObject:
   m_ObjectHideFlags: 0

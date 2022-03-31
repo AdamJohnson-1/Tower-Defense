@@ -6,20 +6,22 @@ using System;
 public class CameraController : MonoBehaviour
 {
 
-    private float scrollSpeed = 4f;
-    private float minY = 7f;
-    private float maxY = 25f;
+    public float scrollSpeed = 4f;
+
 
     private float targetCameraHeight;
     private float currentCameraHeight;
     private float minMaxHeightDiff;
 
-    private float panSpeed = 11f;
+    private float panSpeed = 12f;
     private float panBorderThickness = 15f;
-    private float minX = 6f;
-    private float maxX = 42f;
-    private float minZ = -2f;
-    private float maxZ = 40f;
+    [Header("Constraint Settings")]
+    [SerializeField] private float minX = 6f;
+    [SerializeField] private float maxX = 50f;
+    [SerializeField] private float minY = 17f;
+    [SerializeField] private float maxY = 40f;
+    [SerializeField] private float minZ = -2f;
+    [SerializeField] private float maxZ = 40f;
 
     void Start()
     {

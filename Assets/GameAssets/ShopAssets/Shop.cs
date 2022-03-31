@@ -4,6 +4,8 @@ using UnityEngine.UI;
 public class Shop : MonoBehaviour
 {
 
+    public static Shop shopInstance;
+
     public int startingMoney = 150;
     private int currentMoney = 0;
     public Text moneyText;
@@ -20,6 +22,7 @@ public class Shop : MonoBehaviour
 
     void Start()
     {
+        shopInstance = this;
         changeMoney(startingMoney);
     }
 
@@ -34,24 +37,64 @@ public class Shop : MonoBehaviour
         }
     }
 
-    public void clickPurchaseTurretButton(GameObject tower, GameObject towerHologram)
+    private void instanceClickPurchaseTurretButton(GameObject tower, GameObject towerHologram)
     {
         actionHandlerScript.selectTowerToPlace(tower, towerHologram);
     }
 
-    public void changeMoney(int amount)
+    private void instanceChangeMoney(int amount)
     {
         currentMoney += amount;
-        moneyText.text = "  Cash: $" + currentMoney;
+        moneyText.text = "$" + currentMoney;
     }
 
-    public int getMoney()
+    private int instanceGetMoney()
     {
         return currentMoney;
     }
 
-    public bool checkIfMoneyGreaterOrEqual(int amount)
+    private bool instanceCheckIfMoneyGreaterOrEqual(int amount)
     {
         return currentMoney >= amount;
+    }
+
+
+
+    //static methods for singleton pattern - not completely implemented yet
+    public static void clickPurchaseTurretButton(GameObject tower, GameObject towerHologram)
+    {
+        if (Shop.shopInstance)
+        {
+            Shop.shopInstance.instanceClickPurchaseTurretButton(tower, towerHologram);
+        }
+    }
+
+    public static int getMoney()
+    {
+        if(Shop.shopInstance)
+        {
+            return Shop.shopInstance.instanceGetMoney();
+        } else
+        {
+            return 0;
+        }
+    }
+    public static void changeMoney(int amount)
+    {
+        if (Shop.shopInstance)
+        {
+            Shop.shopInstance.instanceChangeMoney(amount);
+        }
+    }
+    public static bool checkIfMoneyGreaterOrEqual(int amount)
+    {
+        if (Shop.shopInstance)
+        {
+            return Shop.shopInstance.instanceCheckIfMoneyGreaterOrEqual(amount);
+        }
+        else
+        {
+            return false;
+        }
     }
 }

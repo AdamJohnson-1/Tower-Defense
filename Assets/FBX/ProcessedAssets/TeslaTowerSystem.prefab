@@ -9961,7 +9961,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dc4f00d14efd544b7178b5d86f51ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDelay: 0.35
+  damageEffect: {fileID: 765516873093873642, guid: 2d3f8d265c74d4d2caf445f208020be4, type: 3}
+  damageEffectEnabled: 1
+  minSizeParticle: 0.4
+  maxSizeParticle: 2
+  particleScale: 1
+  particleLifetime: 1
   towerRange: 8
   maxDamage: 150
   minDamage: 1

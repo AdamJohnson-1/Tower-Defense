@@ -3,7 +3,9 @@ guid: fa8686f8f66cffc4d98ab2d809f947a3
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - damageEffect: {instanceID: 0}
+  - holoMat: {fileID: 2100000, guid: 4cba022e49a394281ba792644485ddfd, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

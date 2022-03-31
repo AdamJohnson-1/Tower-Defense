@@ -11,6 +11,8 @@ public class MobScript : MonoBehaviour
 
     //how many lives are lost when this unit reaches the base
     public int BaseLivesLostOnArrival = 5;
+    public int ScoreWorth = 10;
+    public int MoneyWorth = 10;
 
     public float StartingHealth = 100f;
     private float Health;
@@ -21,6 +23,9 @@ public class MobScript : MonoBehaviour
     private Vector3 destination;
 
     public GameObject healthBar;
+    public GameObject deathEffect;
+    public float deathEffectLifetime = 2f;
+
     private HealthBarScript healthBarScript;
 
     void Start()
@@ -40,7 +45,7 @@ public class MobScript : MonoBehaviour
     {
         //here we check if we've reached the base
         float distance = Vector3.Distance(destination, transform.position);
-        if(distance < 2)
+        if(distance < 4)
         {
             OnArriveToBase();
         }
@@ -51,8 +56,12 @@ public class MobScript : MonoBehaviour
     {
         Health -= amount;
 
-        if(Health <= 0)
+        if (Health <= 0)
+        {
+            Cache.incrementScore(ScoreWorth);
+            Shop.changeMoney(MoneyWorth);
             Die();
+        }
         else
         {
             //update the health bar
@@ -64,7 +73,9 @@ public class MobScript : MonoBehaviour
     {
         Health = 0;
         IsAlive = false;
-
+        GameObject myDeathEffect = Instantiate(deathEffect, gameObject.transform.position,
+            Quaternion.identity);
+        Destroy(myDeathEffect, deathEffectLifetime);
         Destroy(gameObject);
         //destroy object logic should be in the EnemyHandler
         //we should call the enemyHandler function from here
@@ -73,6 +84,7 @@ public class MobScript : MonoBehaviour
     private void OnArriveToBase()
     {
         //call SubtractLives on base object.
+        GameBaseScript.subtractLives(BaseLivesLostOnArrival);
         Die();
     }
 

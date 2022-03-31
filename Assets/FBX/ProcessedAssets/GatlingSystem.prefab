@@ -83,7 +83,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a5944f11fb9c848bbaddc42cf47f1c6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  countUpToShoot: 0
+  damageEffect: {fileID: 2108075481470070450, guid: ccb76b205bac34cbba38f46fe76c872c, type: 3}
+  damageEffectEnabled: 1
+  minSizeParticle: 0.2
+  maxSizeParticle: 0.5
+  particleScale: 0.25
+  particleLifetime: 1
   attackDamage: 5
   attackDelay: 0.2
 --- !u!1 &2450326459835983581
