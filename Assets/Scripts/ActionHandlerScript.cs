@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class ActionHandlerScript : MonoBehaviour
 {
+    public static ActionHandlerScript ActionHandlerScriptInstance = null;
+
     private ActionState currentState;
     private TowerHandler towerHandler;
 
@@ -14,10 +16,14 @@ public class ActionHandlerScript : MonoBehaviour
     public Material invalidTowerPlacementMaterial;
     public Material validTowerPlacementMaterial;
 
+    public GameObject SelectBorder;
+
     void Start()
     {
+        ActionHandlerScript.ActionHandlerScriptInstance = this;
+
         towerHandler = gameObject.GetComponent<TowerHandler>();
-        currentState = new NoneState(this);
+        currentState = new NoneState(this, SelectBorder);
     }
 
     public void selectTowerToPlace(GameObject tower, GameObject holo)
@@ -28,9 +34,23 @@ public class ActionHandlerScript : MonoBehaviour
     }
     public void deselectTowerToPlace()
     {
-        ActionState newState = new NoneState(this);
+        ActionState newState = new NoneState(this, SelectBorder);
         currentState.leaveState(newState);
-        currentState = new NoneState(this);
+        currentState = new NoneState(this, SelectBorder);
+    }
+
+    public void selectTowerToEdit(GameObject nodeObj)
+    {
+        ActionState newState = new TowerSelectedState(this, SelectBorder, nodeObj);
+        currentState.leaveState(newState);
+        currentState = newState;
+        SelectBorder.SetActive(true);
+    }
+    public void deselectTowerToEdit()
+    {
+        ActionState newState = new NoneState(this, SelectBorder);
+        currentState.leaveState(newState);
+        currentState = new NoneState(this, SelectBorder);
     }
 
 
@@ -68,6 +88,42 @@ public class ActionHandlerScript : MonoBehaviour
         public abstract void onMouseLeaveNode(GameObject nodeObject);
         public abstract void onLeftMouseDown();
         public abstract void onRightMouseDown();
+    }
+
+    class TowerSelectedState : ActionState
+    {
+        private GameObject SelectBorder;
+        private GameObject nodeObj;
+
+        public TowerSelectedState(ActionHandlerScript script, GameObject _SelectBorder, GameObject _nodeObj) : base(script)
+        {
+            SelectBorder = _SelectBorder;
+            nodeObj = _nodeObj;
+
+            if(UpgradeTowerScript.UpgradeTowerScriptInstance == null)
+            {
+                Debug.Log("UpgradeTowerBox must be active when the game starts - its Start() must be run.");
+            }
+
+            UpgradeTowerScript.UpgradeTowerScriptInstance.SelectTower(nodeObj);
+        }
+
+        public override void leaveState(ActionState newState)
+        {
+            SelectBorder.SetActive(false);
+        }
+        public override void onMouseEnterNode(GameObject nodeObject)
+        {
+        }
+        public override void onMouseLeaveNode(GameObject nodeObject)
+        {
+        }
+        public override void onLeftMouseDown()
+        {
+        }
+        public override void onRightMouseDown()
+        {
+        }
     }
 
     class TowerPlacingState : ActionState
@@ -160,11 +216,17 @@ public class ActionHandlerScript : MonoBehaviour
 
             //returns if player's cursor is not on a node
             if (GameObject.ReferenceEquals(nodeGameObject, null))
+            {
+                parentScript.deselectTowerToPlace();
                 return;
+            }
 
             //returns if for some reason a tower isn't selected
             if (GameObject.ReferenceEquals(tower, null))
+            {
+                parentScript.deselectTowerToPlace();
                 return;
+            }
 
             attemptPlaceTower();
         }
@@ -218,21 +280,56 @@ public class ActionHandlerScript : MonoBehaviour
 
     class NoneState : ActionState
     {
-        public NoneState(ActionHandlerScript script) : base(script)
+
+        public GameObject SelectBorder;
+        private GameObject CurrentNode = null;
+
+        public NoneState(ActionHandlerScript script, GameObject _SelectBorder) : base(script)
         {
+            SelectBorder = _SelectBorder;
         }
 
         public override void leaveState(ActionState newState)
         {
+            if (SelectBorder.activeSelf)
+            {
+                SelectBorder.SetActive(false);
+            }
         }
         public override void onMouseEnterNode(GameObject nodeObject)
         {
+            if (!parentScript.towerHandler.checkIfValidTowerLocation(nodeObject))
+            {
+                SelectBorder.SetActive(true);
+
+                //places hologram
+                Vector3 nodePosition = nodeObject.transform.position;
+                float x = nodePosition.x;
+                float y = nodePosition.y;
+                float z = nodePosition.z;
+
+                SelectBorder.transform.position = new Vector3(
+                    x + TowerHandler.relativeTowerPosX,
+                    y + TowerHandler.relativeTowerPosY,
+                    z + TowerHandler.relativeTowerPosZ);
+
+                CurrentNode = nodeObject;
+            }
         }
         public override void onMouseLeaveNode(GameObject nodeObject)
         {
+            if (SelectBorder.activeSelf)
+            {
+                SelectBorder.SetActive(false);
+                CurrentNode = null;
+            }
         }
         public override void onLeftMouseDown()
         {
+            if(CurrentNode != null)
+            {
+                parentScript.selectTowerToEdit(CurrentNode);
+            }
         }
         public override void onRightMouseDown()
         {

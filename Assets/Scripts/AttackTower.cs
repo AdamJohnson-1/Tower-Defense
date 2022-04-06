@@ -19,6 +19,25 @@ public abstract class AttackTower : MonoBehaviour
     public abstract float AttackDelay();
 
 
+    //Used solely for the interface when placing a tower. 
+    public abstract float GetDefaultRange();
+    //The price an implementation of the tower can be purchased for
+    public abstract int GetTowerPrice();
+
+    protected int TowerLevel = 1;
+    public abstract string GetTowerName();
+    public abstract int GetTowerUpgradePrice();
+    public void UpgradeTower()
+    {
+        Shop.changeMoney(-GetTowerUpgradePrice());
+        TowerLevel++;
+    }
+    public int GetTowerlevel()
+    {
+        return TowerLevel;
+    }
+
+
     //This is called when the tower attacks or does it's special effect
     public virtual void Animate(List<GameObject> targetedEnemies)
     {
@@ -40,7 +59,7 @@ public abstract class AttackTower : MonoBehaviour
             Animate(filteredEnemies);
             foreach (GameObject enemy in filteredEnemies)
             {
-                Debug.Log("Shooting enemy");
+                //Debug.Log("Shooting enemy");
                 float damage = GetDamage(enemy);
                 RunTakeDamageEffect(damage, enemy);
                 enemy.GetComponent<MobScript>().TakeDamage(damage);
@@ -76,16 +95,9 @@ public abstract class AttackTower : MonoBehaviour
         return Vector3.Distance(towerPosition, enemyPosition);
     }
 
-
-    //Used solely for the interface when placing a tower. 
-    public abstract float GetDefaultRange();
-    //The price an implementation of the tower can be purchased for
-    public abstract int GetTowerPrice();
-
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(gameObject.transform.position, GetDefaultRange());
     }
-
 
 }
