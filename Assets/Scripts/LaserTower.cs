@@ -38,6 +38,16 @@ public class LaserTower : AttackTower
 
     public override int GetTowerPrice()
     {
-        return 120;
+        return 100;
+    }
+
+
+    public override string GetTowerName()
+    {
+        return "Gauss Cannon";
+    }
+    public override int GetTowerUpgradePrice()
+    {
+        return GetTowerPrice() + (TowerLevel * 70);
     }
 }
