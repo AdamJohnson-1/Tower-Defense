@@ -30,13 +30,15 @@ public class ActionHandlerScript : MonoBehaviour
     {
         if (GameObject.ReferenceEquals(tower, null) || GameObject.ReferenceEquals(holo, null))
             return;
-        currentState = new TowerPlacingState(this, tower, holo);
+        ActionState newState = new TowerPlacingState(this, tower, holo);
+        currentState.leaveState(newState);
+        currentState = newState;
     }
     public void deselectTowerToPlace()
     {
         ActionState newState = new NoneState(this, SelectBorder);
         currentState.leaveState(newState);
-        currentState = new NoneState(this, SelectBorder);
+        currentState = newState;
     }
 
     public void selectTowerToEdit(GameObject nodeObj)
@@ -50,7 +52,7 @@ public class ActionHandlerScript : MonoBehaviour
     {
         ActionState newState = new NoneState(this, SelectBorder);
         currentState.leaveState(newState);
-        currentState = new NoneState(this, SelectBorder);
+        currentState = newState;
     }
 
 
@@ -94,13 +96,15 @@ public class ActionHandlerScript : MonoBehaviour
     {
         private GameObject SelectBorder;
         private GameObject nodeObj;
+        private GameObject mousedOverNode;
 
         public TowerSelectedState(ActionHandlerScript script, GameObject _SelectBorder, GameObject _nodeObj) : base(script)
         {
             SelectBorder = _SelectBorder;
             nodeObj = _nodeObj;
+            mousedOverNode = _nodeObj;
 
-            if(UpgradeTowerScript.UpgradeTowerScriptInstance == null)
+            if (UpgradeTowerScript.UpgradeTowerScriptInstance == null)
             {
                 Debug.Log("UpgradeTowerBox must be active when the game starts - its Start() must be run.");
             }
@@ -111,6 +115,7 @@ public class ActionHandlerScript : MonoBehaviour
         public override void leaveState(ActionState newState)
         {
             SelectBorder.SetActive(false);
+            
         }
         public override void onMouseEnterNode(GameObject nodeObject)
         {
@@ -156,7 +161,10 @@ public class ActionHandlerScript : MonoBehaviour
         public override void leaveState(ActionState newState)
         {
             if(!GameObject.ReferenceEquals(nodeGameObject, null))
+            {
+                newState.onMouseEnterNode(nodeGameObject);
                 onMouseLeaveNode(nodeGameObject);
+            }
 
 
             parentScript.towerPlacementTip.gameObject.SetActive(false);

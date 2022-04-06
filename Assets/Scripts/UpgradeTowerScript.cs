@@ -34,7 +34,7 @@ public class UpgradeTowerScript : MonoBehaviour
 
         NameText.text = towerScript.GetTowerName();
         LevelText.text = towerScript.GetTowerlevel().ToString();
-        UpgradeCostText.text = "Upgrade  -  $" + towerScript.GetTowerUpgradePrice().ToString();
+        UpgradeCostText.text = "UPGRADE - $" + towerScript.GetTowerUpgradePrice().ToString();
 
         Container.SetActive(true);
     }
