@@ -70,7 +70,7 @@ public class GatlingAttack : AttackTower
 
     public override float GetDamage(GameObject enemy)
     {
-        return attackDamage + TowerLevel - 1f;
+        return attackDamage;
     }
 
     public override List<GameObject> FilterTargets(List<GameObject> enemies)
@@ -85,16 +85,6 @@ public class GatlingAttack : AttackTower
             target = null;
         }
         return enemiesToAttack;
-    }
-
-
-    public override string GetTowerName()
-    {
-        return "Gatling Gun";
-    }
-    public override int GetTowerUpgradePrice()
-    {
-        return GetTowerPrice() + (TowerLevel * 40);
     }
 
 }

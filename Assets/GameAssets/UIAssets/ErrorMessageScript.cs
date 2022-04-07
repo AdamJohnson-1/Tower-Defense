@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ErrorMessageScript : MonoBehaviour {
-
-    public static ErrorMessageScript ErrorMessageScriptInstance = null;
+public class ErrorMessageScript : MonoBehaviour { 
 
     private CanvasGroup canvGroup;
     public Text textbox;
@@ -14,7 +12,6 @@ public class ErrorMessageScript : MonoBehaviour {
 
     void Start()
     {
-        ErrorMessageScript.ErrorMessageScriptInstance = this;
         canvGroup = GetComponent<CanvasGroup>();
     }
 
