@@ -4,6 +4,22 @@ using UnityEngine;
 
 public class LaserTower : AttackTower
 {
+    private Animator anim;
+    public LineRenderer lineRenderer;
+
+
+    [Header("Laser Settings")]
+    public float attackDamage = 50f;
+    public float attackDelay = 5f;
+
+    public Transform firePoint;
+    public float laserVisibilityTime;
+
+    private void Awake()
+    {
+        anim = gameObject.GetComponent<Animator>();
+        countUpToShoot = AttackDelay(); // allow tower to shoot right after placement
+    }
     public override float AttackDelay()
     {
         return 3f;
@@ -28,7 +44,7 @@ public class LaserTower : AttackTower
 
     public override float GetDamage(GameObject enemy)
     {
-        return 60f;
+        return attackDamage + attackDamage * (TowerLevel - 1f) / 2;
     }
 
     public override float GetDefaultRange()
