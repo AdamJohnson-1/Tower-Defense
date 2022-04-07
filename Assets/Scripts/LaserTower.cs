@@ -7,6 +7,11 @@ public class LaserTower : AttackTower
     private Animator anim;
     public LineRenderer lineRenderer;
 
+
+    [Header("Laser Settings")]
+    public float attackDamage = 50f;
+    public float attackDelay = 5f;
+
     public Transform firePoint;
     public float laserVisibilityTime;
 
@@ -44,7 +49,7 @@ public class LaserTower : AttackTower
 
     public override float GetDamage(GameObject enemy)
     {
-        return 60f;
+        return attackDamage + attackDamage * (TowerLevel - 1f) / 2;
     }
 
     public override float GetDefaultRange()

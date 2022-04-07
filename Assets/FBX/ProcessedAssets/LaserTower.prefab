@@ -66,13 +66,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734d3fccf61994320b7fa15ffccaa6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageEffect: {fileID: 0}
+  damageEffect: {fileID: 3129997276079991692, guid: 8380e6599528a47c58b79975ea47532a, type: 3}
   damageEffectEnabled: 1
   minSizeParticle: 0.4
   maxSizeParticle: 2
   particleScale: 1
   particleLifetime: 1
   lineRenderer: {fileID: 568367584437247707}
+  attackDamage: 50
+  attackDelay: 5
   firePoint: {fileID: 3433807261913603660}
   laserVisibilityTime: 0.17
 --- !u!120 &568367584437247707

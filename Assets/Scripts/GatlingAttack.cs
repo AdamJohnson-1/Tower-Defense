@@ -70,7 +70,7 @@ public class GatlingAttack : AttackTower
 
     public override float GetDamage(GameObject enemy)
     {
-        return attackDamage + TowerLevel - 1f;
+        return attackDamage + attackDamage * (TowerLevel - 1f) / 2;
     }
 
     public override List<GameObject> FilterTargets(List<GameObject> enemies)
