@@ -5,7 +5,10 @@ using UnityEngine;
 public class LaserTower : AttackTower
 {
     private Animator anim;
+    public LineRenderer lineRenderer;
 
+    public Transform firePoint;
+    public float laserVisibilityTime;
 
     private void Awake()
     {
@@ -71,6 +74,7 @@ public class LaserTower : AttackTower
 
         if (biggest == null)
         {
+            lineRenderer.enabled = false;
             var enemies = GameObject.FindGameObjectsWithTag("horde");
             FilterTargets(new List<GameObject>(enemies));
         }
@@ -80,6 +84,16 @@ public class LaserTower : AttackTower
             Vector3 lookVector = biggest.transform.position - transform.position;
             var rotation = Quaternion.LookRotation(lookVector);
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 1);
+
+            lineRenderer.SetPosition(0, firePoint.position);
+            var dest = biggest.transform.position;
+            dest.y += 0.2f;
+            lineRenderer.SetPosition(1, dest);
+        }
+
+        if (countUpToShoot > laserVisibilityTime)
+        {
+            lineRenderer.enabled = false;
         }
     }
 
@@ -88,9 +102,12 @@ public class LaserTower : AttackTower
         if (targetedEnemies.Count == 0)
         {
             anim.enabled = false;
+            lineRenderer.enabled = false;
         }
         else
         {
+            var laserDest = targetedEnemies[0].transform.position;
+            lineRenderer.enabled = true;
             anim.enabled = true;
             anim.Play("");
         }
