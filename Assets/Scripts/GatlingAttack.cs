@@ -7,6 +7,7 @@ public class GatlingAttack : AttackTower
     [Header("Gatling Settings")]
     public float attackDamage = 5f;
     public float attackDelay = 5f;
+
     private Animator anim;
     private ParticleSystem pSystem;
     private Light pLight;
@@ -70,7 +71,7 @@ public class GatlingAttack : AttackTower
 
     public override float GetDamage(GameObject enemy)
     {
-        return attackDamage + TowerLevel - 1f;
+        return attackDamage + attackDamage * (TowerLevel - 1f) / 2;
     }
 
     public override List<GameObject> FilterTargets(List<GameObject> enemies)
