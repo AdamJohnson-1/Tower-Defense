@@ -9,16 +9,11 @@ public class PurchaseTowerButtonScript : MonoBehaviour
     public GameObject tower;
     public GameObject towerHologram;
 
-    public Text NameText;
-    public Text CostText;
+    public string towerName;
+    public Text nameText;
 
     void Start()
     {
-
-        AttackTower towerScript = tower.GetComponent<AttackTower>();
-        NameText.text = towerScript.GetTowerName();
-        CostText.text = "$" + towerScript.GetTowerPrice().ToString();
-
         GetComponent<Button>().onClick.AddListener(() =>
         {
             Shop.clickPurchaseTurretButton(tower, towerHologram);

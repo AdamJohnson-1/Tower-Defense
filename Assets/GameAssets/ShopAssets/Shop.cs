@@ -6,7 +6,7 @@ public class Shop : MonoBehaviour
 
     public static Shop shopInstance;
 
-    public int startingMoney;
+    public int startingMoney = 150;
     private int currentMoney = 0;
     public Text moneyText;
 
