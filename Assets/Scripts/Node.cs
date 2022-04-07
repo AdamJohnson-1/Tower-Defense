@@ -9,7 +9,7 @@ public class Node : MonoBehaviour
     private Renderer myRenderer;
     private Color startColor;
 
-    public bool hasTower = false;
+    public GameObject tower = null;
 
     private MouseInputHandlerScript mouseInputHandler;
 

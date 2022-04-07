@@ -49,7 +49,7 @@ public class TeslaTower : AttackTower
 
     public override float GetDamage(GameObject enemy)
     {
-        var damage = (float)(maxDamage / Math.Pow(CalcDistance(enemy) + 1, 2));
+        var damage = (float)(maxDamage / Math.Pow(CalcDistance(enemy) + 1, 2)) + Mathf.Sqrt(TowerLevel);
         return Math.Max(minDamage, damage);
     }
 
@@ -98,5 +98,15 @@ public class TeslaTower : AttackTower
     public override int GetTowerPrice()
     {
         return 70;
+    }
+
+
+    public override string GetTowerName()
+    {
+        return "Tesla Tower";
+    }
+    public override int GetTowerUpgradePrice()
+    {
+        return GetTowerPrice() * TowerLevel;
     }
 }

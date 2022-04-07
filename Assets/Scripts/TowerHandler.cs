@@ -5,11 +5,18 @@ using UnityEngine;
 public class TowerHandler : MonoBehaviour
 {
 
+    public static TowerHandler TowerHandlerInstance;
+
     public static float relativeTowerPosX = 1.25f;
     public static float relativeTowerPosY = 1.9f;
     public static float relativeTowerPosZ = -1.25f;
 
     private List<GameObject> towers = new List<GameObject>();
+
+    void Start()
+    {
+        TowerHandler.TowerHandlerInstance = this;
+    }
 
     public bool addTower(GameObject tower, GameObject selectedNode)
     {
@@ -27,23 +34,31 @@ public class TowerHandler : MonoBehaviour
         GameObject newTower = Instantiate(tower, towerPosition, Quaternion.identity);
         towers.Add(newTower);
 
-        selectedNode.GetComponent<Node>().hasTower = true;
+        selectedNode.GetComponent<Node>().tower = newTower;
 
         return true;
     }
 
-    public bool removeTower()
+    public bool removeTowerFromNode(GameObject nodeObj)
     {
-        //to be implemented
+        if (nodeObj == null)
+            return false;
 
-        //remove gameobject
-        //find corresponding node and set hasTower to false;
+        Node nodeScript = nodeObj.GetComponent<Node>();
+        GameObject tower = nodeScript.tower;
 
-        return false;
+        //NEEDS TO BE IMPLEMENTED!!!
+
+        nodeScript.tower = null;
+        Destroy(tower);
+
+        return true;
     }
 
     public bool checkIfValidTowerLocation(GameObject nodeObj)
     {
-        return !nodeObj.GetComponent<Node>().hasTower;
+        if (nodeObj == null)
+            return false;
+        return (nodeObj.GetComponent<Node>().tower == null);
     }
 }

@@ -87,4 +87,14 @@ public class GatlingAttack : AttackTower
         return enemiesToAttack;
     }
 
+
+    public override string GetTowerName()
+    {
+        return "Gatling Gun";
+    }
+    public override int GetTowerUpgradePrice()
+    {
+        return GetTowerPrice() + (TowerLevel * 40);
+    }
+
 }
