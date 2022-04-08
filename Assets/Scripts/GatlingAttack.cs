@@ -70,7 +70,7 @@ public class GatlingAttack : AttackTower
 
     public override float GetDamage(GameObject enemy)
     {
-        return attackDamage;
+        return attackDamage + attackDamage * (TowerLevel - 1f) / 2;
     }
 
     public override List<GameObject> FilterTargets(List<GameObject> enemies)
@@ -87,9 +87,14 @@ public class GatlingAttack : AttackTower
         return enemiesToAttack;
     }
 
-    // public override AudioSource GetAttackSoundEffect()
-    // {
-    //     return attackSoundEffect;
-    // }
+
+    public override string GetTowerName()
+    {
+        return "Gatling Gun";
+    }
+    public override int GetTowerUpgradePrice()
+    {
+        return GetTowerPrice() + (TowerLevel * 40);
+    }
 
 }
