@@ -87,4 +87,9 @@ public class GatlingAttack : AttackTower
         return enemiesToAttack;
     }
 
+    // public override AudioSource GetAttackSoundEffect()
+    // {
+    //     return attackSoundEffect;
+    // }
+
 }

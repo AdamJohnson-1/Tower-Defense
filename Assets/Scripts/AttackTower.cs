@@ -11,24 +11,34 @@ public abstract class AttackTower : MonoBehaviour
     public float maxSizeParticle = 2f;
     public float particleScale = 1f;
     public float particleLifetime = 1f;
+    public AudioSource attackSoundEffect;
 
     protected float countUpToShoot = 0;
     public abstract float GetDamage(GameObject enemy);
 
-    //Returns a float, example 2.5 seconds
+    // Returns a float, example 2.5 seconds
     public abstract float AttackDelay();
 
+    private bool playingSound = false;
 
-    //This is called when the tower attacks or does it's special effect
+
+    // This is called when the tower attacks or does it's special effect
     public virtual void Animate(List<GameObject> targetedEnemies)
     {
-        //Does nothing by default
-        //When a tower has an animation this method should be overriden
+        // Does nothing by default
+        // When a tower has an animation this method should be overriden
     }
 
-    //returns only the enemies upon which this particular tower will have an effect
+    // returns only the enemies upon which this particular tower will have an effect
     public abstract List<GameObject> FilterTargets(List<GameObject> enemies);
 
+    // This is called when the tower attacks
+    public virtual AudioSource GetAttackSoundEffect()
+    {
+        // Default is no sound
+        // When a tower has a sound effect this method should be overriden to return the sound
+        return attackSoundEffect;
+    }
 
     public void Update()
     {
@@ -38,6 +48,19 @@ public abstract class AttackTower : MonoBehaviour
             var enemies = GameObject.FindGameObjectsWithTag("horde");
             var filteredEnemies = FilterTargets(new List<GameObject> (enemies));
             Animate(filteredEnemies);
+
+            // AudioSource attackSound = GetAttackSoundEffect();
+            // if (attackSound != null) {
+            //     attackSound.Play();
+            // }
+            if (filteredEnemies.Count > 0 & !playingSound)// & !attackSoundEffect.isPlaying)
+            {
+                playingSound = true;
+                Debug.Log("Firing Coroutine");
+                StartCoroutine(playSound());
+                // attackSoundEffect.PlayOneShot(attackSoundEffect.clip, 0.5f);
+            }
+
             foreach (GameObject enemy in filteredEnemies)
             {
                 Debug.Log("Shooting enemy");
@@ -47,6 +70,22 @@ public abstract class AttackTower : MonoBehaviour
             }
         countUpToShoot = 0;
         }
+    }
+
+    IEnumerator playSound() {
+        attackSoundEffect.enabled = true;
+        attackSoundEffect.gameObject.SetActive(true);
+        string soundEffectEnabled = attackSoundEffect.enabled ? "enabled" : "disabled!";
+        string gameObjectEnabled = attackSoundEffect.gameObject.activeInHierarchy ? "active" : "inactive!";
+        Debug.Log("AudioSource is " + soundEffectEnabled);
+        Debug.Log("AudioSource is " + gameObjectEnabled);
+        Debug.Log("In playSound");
+        attackSoundEffect.PlayOneShot(attackSoundEffect.clip);
+        Debug.Log("Played sound");   
+        yield return new WaitForSeconds (attackSoundEffect.clip.length / 7.5f);
+        Debug.Log("After yield return");
+
+        playingSound = false;
     }
 
     public void RunTakeDamageEffect(float damage, GameObject enemy)
