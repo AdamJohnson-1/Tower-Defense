@@ -8024,7 +8024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waitBetweenWaves: 5
-  waveScaling: 4
+  waveScaling: 3.5
   destination: {fileID: 8119214459942953294}
   enemies:
   - {fileID: 4057962679367890660, guid: 1fef13efb32864ea4995f9c57ef66eb9, type: 3}
@@ -8039,6 +8039,7 @@ MonoBehaviour:
   - 2
   - 4
   enemyRarity: 0000000001000000030000000200000004000000
+  enemySpawnEffect: {fileID: 1998426773305135983, guid: 5d9eec11dcfe949a9880723c39a6e636, type: 3}
 --- !u!4 &1247382764
 Transform:
   m_ObjectHideFlags: 0
