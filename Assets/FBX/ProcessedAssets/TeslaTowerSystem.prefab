@@ -9971,7 +9971,7 @@ MonoBehaviour:
   particleLifetime: 1
   attackSoundEffect: {fileID: 8412935338996007519}
   towerRange: 8
-  maxDamage: 150
+  maxDamage: 100
   minDamage: 1
   lightOnMaxTime: 0.1
   lightningSystem: {fileID: 173390626078980278}
