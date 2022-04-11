@@ -767,7 +767,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "World Record\t:"
+  m_Text: 'World Record:'
 --- !u!222 &1395161554
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1184,6 +1184,6 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 470.95, y: -30}
+  m_AnchoredPosition: {x: 365.95, y: -30}
   m_SizeDelta: {x: 564.07, y: 105.308}
   m_Pivot: {x: 0.5, y: 0.5}

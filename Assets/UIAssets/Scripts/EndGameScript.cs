@@ -30,9 +30,14 @@ public class EndGameScript : MonoBehaviour
     async void GetWorldRecord()
     {
         using var client = new HttpClient();
-        var content = await client.GetStringAsync("https://students.cs.byu.edu/~jscholl4/score.php");
+        var content = await client.GetStringAsync("https://students.cs.byu.edu/~jscholl4/towerdefense/score.php");
         worldRecordText.text = content;
         Debug.Log(content);
+
+        if (totalScore > int.Parse(worldRecordText.text)) 
+        {
+            await client.PostAsync("https://students.cs.byu.edu/~jscholl4/towerdefense/update.php", new StringContent(totalScore.ToString()));
+        }
     }
 
     void Update()
