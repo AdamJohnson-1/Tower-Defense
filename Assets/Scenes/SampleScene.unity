@@ -7950,7 +7950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e018a5ceee334d1bb58908f8894f4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitBetweenWaves: 6
+  waitBetweenWaves: 5
   waveScaling: 3.5
   destination: {fileID: 8119214459942953294}
   enemies:
@@ -10561,8 +10561,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 919132149057618976}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 30, y: -150, z: 100}
-  m_LocalScale: {x: 200, y: 200, z: 200}
+  m_LocalPosition: {x: 30, y: -100, z: 100}
+  m_LocalScale: {x: 150, y: 150, z: 150}
   m_Children:
   - {fileID: 3745622627712353791}
   - {fileID: 4931218026962443589}
