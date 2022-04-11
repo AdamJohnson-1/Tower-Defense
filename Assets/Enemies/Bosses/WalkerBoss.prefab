@@ -566,7 +566,7 @@ MonoBehaviour:
   IsAlive: 1
   BaseLivesLostOnArrival: 8
   ScoreWorth: 100
-  MoneyWorth: 150
+  MoneyWorth: 25
   StartingHealth: 1200
   DefaultMoveSpeed: 2.5
   navMeshAgent: {fileID: 4762628555367537887}

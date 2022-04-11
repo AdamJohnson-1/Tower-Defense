@@ -13,6 +13,7 @@ public class EnemySpawner : MonoBehaviour
     public List<GameObject> enemies;
     public List<float> enemyDangerLvl;
     public List<int> enemyRarity;
+    public GameObject enemySpawnEffect;
 
     private Dictionary<GameObject, float> enemyToDangerLvl;
 
@@ -83,6 +84,8 @@ public class EnemySpawner : MonoBehaviour
     private void spawnEnemy(GameObject enemy)
     {
         float positionOnEdge = Random.Range(.1f, 49.9f);
+        GameObject ese = Instantiate(enemySpawnEffect, new Vector3(57f, 0, positionOnEdge), Quaternion.Euler(new Vector3(0, 0, 0)));
+        Destroy(ese, 1f);
         Instantiate(enemy, new Vector3(57f, 0, positionOnEdge), Quaternion.Euler(new Vector3(0,0, 0)));
     }
 }

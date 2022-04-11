@@ -220,18 +220,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 734d3fccf61994320b7fa15ffccaa6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damageEffect: {fileID: 0}
+  damageEffect: {fileID: 3129997276079991692, guid: 8380e6599528a47c58b79975ea47532a, type: 3}
   damageEffectEnabled: 1
   minSizeParticle: 0.4
   maxSizeParticle: 2
   particleScale: 1
   particleLifetime: 1
-  attackSoundEffect: {fileID: 0}
-  lineRenderer: {fileID: 0}
-  attackDamage: 50
+  attackSoundEffect: {fileID: 8277902524649730211}
+  lineRenderer: {fileID: 568367584437247707}
+  attackDamage: 45
   attackDelay: 5
-  firePoint: {fileID: 0}
-  laserVisibilityTime: 0
+  firePoint: {fileID: 3185430734924812936}
+  laserVisibilityTime: 0.1
 --- !u!1 &5356623202469704847
 GameObject:
   m_ObjectHideFlags: 0
@@ -439,5 +439,10 @@ PrefabInstance:
 --- !u!4 &8612069468797448146 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd05be07ee8d95e4f8a0d7381b1f6f6b, type: 3}
+  m_PrefabInstance: {fileID: 8074548347158251577}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3185430734924812936 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -2577639463117399375, guid: bd05be07ee8d95e4f8a0d7381b1f6f6b, type: 3}
   m_PrefabInstance: {fileID: 8074548347158251577}
   m_PrefabAsset: {fileID: 0}
