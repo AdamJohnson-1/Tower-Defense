@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Net.Http;
 
 public class EndGameScript : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class EndGameScript : MonoBehaviour
     private int totalScore;
 
     public Text scoreText;
+    public Text worldRecordText;
 
     void Start()
     {
@@ -19,6 +21,18 @@ public class EndGameScript : MonoBehaviour
         curScoreincrementer = 0;
         totalScore = Cache.getScore();
         Cache.resetScore();
+
+        GetWorldRecord();
+    }
+
+
+
+    async void GetWorldRecord()
+    {
+        using var client = new HttpClient();
+        var content = await client.GetStringAsync("https://students.cs.byu.edu/~jscholl4/score.php");
+        worldRecordText.text = content;
+        Debug.Log(content);
     }
 
     void Update()
